@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.smartroom_javafx/com.example.smartroom_javafx.HelloApplication
+                            <mainClass>com.example.smartroom_javafx/com.example.smartroom_javafx.Application
                             </mainClass>
                         </configuration>
                     </execution>
