@@ -209,7 +209,7 @@ public class Room {
         }
     }
 
-
+/*
     private String roomName;
     private int door;
     private int fan;
@@ -222,6 +222,8 @@ public class Room {
         this.fan = fan;
         this.light = light;
         this.window = window;
+
+
     }
 
     public String getRoomName() { return roomName; }
@@ -238,5 +240,7 @@ public class Room {
 
     public int getWindow() { return window; }
     public void setWindow(int window) { this.window = window; }
+
+ */
 
 }

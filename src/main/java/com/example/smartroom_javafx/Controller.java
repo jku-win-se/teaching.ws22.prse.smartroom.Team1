@@ -1,87 +1,68 @@
 package com.example.smartroom_javafx;
 
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-
-        //Table
-        @FXML
-        private TableView<Room> tableView;
+    LinkedList<Room> rooms = new LinkedList<>();
 
 
-        //Columns
-        @FXML
-        private TableColumn<Room, String> roomNameColumn;
 
-        @FXML
-        private TableColumn<Room, Integer> doorColumn;
+                @FXML
+                private TableView<Room> RoomTableView;
 
-        @FXML
-        private TableColumn<Room, Integer> fanColumn;
+                @FXML
+                private TableColumn<Room, Integer> RoomIDColumn;
 
-        @FXML
-        private TableColumn<Room, Integer> lightColumn;
+                @FXML
+                private TableColumn<Room, String> RoomNameColumn;
 
-        @FXML
-        private TableColumn<Room, Integer> windowColumn;
+                @FXML
+                private TableColumn<Room, Integer> RoomSizeColumn;
 
+                @FXML
+                private TextField RoomIDInput;
 
-        //Text input
-        @FXML
-        private TextField doorInput;
+                @FXML
+                private TextField RoomNameInput;
 
-        @FXML
-        private TextField fanInput;
+                @FXML
+                private TextField RoomSizeInput;
 
-        @FXML
-        private TextField lightInput;
+                @FXML
+                void btnAddRoom(ActionEvent event) throws SQLException {
+                         String RoomName = RoomNameInput.getText();
+                         int RoomSize = Integer.parseInt(RoomSizeInput.getText());
+                         int RoomID = Integer.parseInt(RoomIDInput.getText());
 
-        @FXML
-        private TextField roomNameInput;
-
-        @FXML
-        private TextField windowInput;
+                         createRoom(RoomName, RoomSize, RoomID);
+                }
 
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                roomNameColumn.setCellValueFactory(new PropertyValueFactory<Room, String>("roomName"));
-                doorColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("door"));
-                fanColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("fan"));
-                lightColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("light"));
-                windowColumn.setCellValueFactory(new PropertyValueFactory<Room, Integer>("window"));
+
         }
 
-
-        //Button
-        @FXML
-        void btnAddRoom(ActionEvent event) {
-                Room room = new Room(roomNameInput.getText(),
-                        Integer.parseInt(doorInput.getText()),
-                        Integer.parseInt(fanInput.getText()),
-                        Integer.parseInt(lightInput.getText()),
-                        Integer.parseInt(windowInput.getText()));
-                ObservableList<Room> rooms = tableView.getItems();
+        public void createRoom(String RoomName, int RoomSize, int RoomID) throws SQLException {
+                Room room = new Room(RoomName, RoomSize, RoomSize);
                 rooms.add(room);
-                tableView.setItems(rooms);
-                }
+                DatabaseConnection.AddRoomToDatabase(room);
 
-        @FXML
-        void btnRemoveRoom(ActionEvent event) {
-                int selectedID = tableView.getSelectionModel().getSelectedIndex();
-                tableView.getItems().remove(selectedID);
+
+
         }
-    }
+
+
+}

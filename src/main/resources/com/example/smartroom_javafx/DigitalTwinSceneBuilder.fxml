@@ -13,30 +13,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller">
    <children>
-      <Button layoutX="380.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnRemoveRoom" prefHeight="26.0" prefWidth="73.0" text="Remove" />
-      <VBox layoutX="14.0" layoutY="81.0" prefHeight="220.0" prefWidth="183.0">
+      <VBox layoutX="14.0" layoutY="81.0" prefHeight="137.0" prefWidth="183.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room-Name" />
-            <TextField fx:id="roomNameInput" prefHeight="26.0" prefWidth="62.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Door" />
-            <TextField fx:id="doorInput" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Window" />
-            <TextField fx:id="windowInput" prefHeight="26.0" prefWidth="62.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Light" />
-            <TextField fx:id="lightInput" prefHeight="26.0" prefWidth="62.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fan" />
-            <TextField fx:id="fanInput" prefHeight="26.0" prefWidth="131.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID" />
+            <TextField fx:id="RoomIDInput" prefHeight="26.0" prefWidth="62.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room Name" />
+            <TextField fx:id="RoomNameInput" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Size" />
+            <TextField fx:id="RoomSizeInput" prefHeight="26.0" prefWidth="62.0" />
          </children>
       </VBox>
-      <TableView fx:id="tableView" layoutX="270.0" layoutY="81.0" prefHeight="213.0" prefWidth="379.0">
-        <columns>
-          <TableColumn fx:id="roomNameColumn" prefWidth="164.79998779296875" text="Room-Name" />
-          <TableColumn fx:id="doorColumn" minWidth="0.0" prefWidth="54.0" text="Door" />
-            <TableColumn fx:id="windowColumn" prefWidth="54.0" text="Window" />
-            <TableColumn fx:id="lightColumn" prefWidth="54.0" text="Light" />
-            <TableColumn fx:id="fanColumn" prefWidth="54.0" text="Fan" />
-        </columns>
-      </TableView>
       <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="719.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
@@ -50,11 +36,15 @@
               <MenuItem mnemonicParsing="false" text="Digital Twin Web Search" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Exit" />
         </menus>
       </MenuBar>
-      <Button layoutX="93.0" layoutY="299.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Update" />
-      <Button layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
-      <Button layoutX="270.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnRemoveRoom" prefHeight="26.0" prefWidth="101.0" text="Control Panel" />
+      <Button layoutX="14.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
+      <TableView fx:id="RoomTableView" layoutX="366.0" layoutY="69.0" prefHeight="191.0" prefWidth="316.0">
+        <columns>
+          <TableColumn fx:id="RoomIDColumn" prefWidth="102.0" text="Room ID" />
+          <TableColumn fx:id="RoomNameColumn" prefWidth="115.0" text="Room Name" />
+            <TableColumn fx:id="RoomSizeColumn" prefWidth="98.0" text="Size" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
