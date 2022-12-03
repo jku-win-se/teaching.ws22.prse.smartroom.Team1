@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -9,10 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller">
    <children>
-      <Button layoutX="208.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnRemoveRoom" prefHeight="26.0" prefWidth="73.0" text="Remove" />
-      <VBox layoutX="14.0" layoutY="14.0" prefHeight="266.0" prefWidth="180.0">
+      <Button layoutX="380.0" layoutY="299.0" mnemonicParsing="false" onAction="#btnRemoveRoom" prefHeight="26.0" prefWidth="73.0" text="Remove" />
+      <VBox layoutX="14.0" layoutY="81.0" prefHeight="220.0" prefWidth="183.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room-Name" />
             <TextField fx:id="roomNameInput" prefHeight="26.0" prefWidth="62.0" />
@@ -24,14 +26,9 @@
             <TextField fx:id="lightInput" prefHeight="26.0" prefWidth="62.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fan" />
             <TextField fx:id="fanInput" prefHeight="26.0" prefWidth="131.0" />
-            <Button mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room">
-               <VBox.margin>
-                  <Insets top="7.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
-      <TableView fx:id="tableView" layoutX="208.0" layoutY="31.0" prefHeight="196.0" prefWidth="379.0">
+      <TableView fx:id="tableView" layoutX="270.0" layoutY="81.0" prefHeight="213.0" prefWidth="379.0">
         <columns>
           <TableColumn fx:id="roomNameColumn" prefWidth="164.79998779296875" text="Room-Name" />
           <TableColumn fx:id="doorColumn" minWidth="0.0" prefWidth="54.0" text="Door" />
@@ -40,5 +37,24 @@
             <TableColumn fx:id="fanColumn" prefWidth="54.0" text="Fan" />
         </columns>
       </TableView>
+      <MenuBar layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="719.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Import CSV File" />
+                  <MenuItem mnemonicParsing="false" text="Export Data" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Digital Twin Web Search" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Exit" />
+        </menus>
+      </MenuBar>
+      <Button layoutX="93.0" layoutY="299.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="73.0" text="Update" />
+      <Button layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
+      <Button layoutX="270.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnRemoveRoom" prefHeight="26.0" prefWidth="101.0" text="Control Panel" />
    </children>
 </AnchorPane>
