@@ -1,6 +1,7 @@
 package com.example.smartroom_javafx;
 
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -47,6 +48,8 @@ public class Controller implements Initializable {
                          int RoomID = Integer.parseInt(RoomIDInput.getText());
 
                          createRoom(RoomName, RoomSize, RoomID);
+
+
                 }
 
 
@@ -59,6 +62,8 @@ public class Controller implements Initializable {
                 Room room = new Room(RoomName, RoomSize, RoomSize);
                 rooms.add(room);
                 DatabaseConnection.AddRoomToDatabase(room);
+
+
 
 
 
