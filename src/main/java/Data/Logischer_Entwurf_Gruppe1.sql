@@ -15,7 +15,7 @@ DROP TABLE if exists "LIGHT_LOGGING" Cascade;
 
 CREATE TABLE "ROOM" (
                         "roomID" int PRIMARY KEY NOT NULL,
-                        "size" int NOT NULL,
+                        "RoomSize" int NOT NULL,
                         "roomName" VARCHAR NOT NULL
 );
 
