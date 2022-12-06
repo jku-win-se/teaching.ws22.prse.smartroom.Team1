@@ -54,6 +54,18 @@ public class Controller implements Initializable {
 
                 }
 
+            @FXML
+            void btnDeleteRoom(ActionEvent event) throws SQLException{
+                String RoomName = RoomNameInput.getText();
+                int RoomSize = Integer.parseInt(RoomSizeInput.getText());
+                int RoomID = Integer.parseInt(RoomIDInput.getText());
+
+                deleteRoom(RoomName, RoomSize, RoomID);
+
+
+
+            }
+
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,12 +73,16 @@ public class Controller implements Initializable {
         }
 
         public void createRoom(String RoomName, int RoomSize, int RoomID) throws SQLException {
-                Room room = new Room(RoomName, RoomSize, RoomSize);
+                Room room = new Room(RoomName, RoomSize, RoomID);
                 rooms.add(room);
                 DatabaseConnection.AddRoomToDatabase(room);
 
 
-
+        }
+        public void deleteRoom(String RoomName, int RoomSize, int RoomID) throws SQLException {
+        Room room = new Room(RoomName, RoomSize, RoomID);
+        rooms.remove(room);
+        DatabaseConnection.DeleteRoomFromDatabase(room);
 
 
         }

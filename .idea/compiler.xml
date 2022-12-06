@@ -14,4 +14,9 @@
       <module name="SmartRoom_JavaFX" target="19" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SmartRoom_JavaFX" options="-parameters" />
+    </option>
+  </component>
 </project>

@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -39,12 +37,6 @@
         </menus>
       </MenuBar>
       <Button layoutX="14.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
-      <TableView fx:id="RoomTableView" layoutX="366.0" layoutY="69.0" prefHeight="191.0" prefWidth="316.0">
-        <columns>
-          <TableColumn fx:id="RoomIDColumn" prefWidth="102.0" text="Room ID" />
-          <TableColumn fx:id="RoomNameColumn" prefWidth="115.0" text="Room Name" />
-            <TableColumn fx:id="RoomSizeColumn" prefWidth="98.0" text="Size" />
-        </columns>
-      </TableView>
+      <Button layoutX="110.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnDeleteRoom" prefHeight="25.0" prefWidth="87.0" text="Delete Room" />
    </children>
 </AnchorPane>
