@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="593.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller">
    <children>
-      <VBox layoutX="14.0" layoutY="81.0" prefHeight="137.0" prefWidth="183.0">
+      <VBox layoutX="14.0" layoutY="81.0" prefHeight="193.0" prefWidth="183.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room ID" />
             <TextField fx:id="RoomIDInput" prefHeight="26.0" prefWidth="62.0" />
@@ -16,13 +16,19 @@
             <TextField fx:id="RoomNameInput" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Size" />
             <TextField fx:id="RoomSizeInput" prefHeight="26.0" prefWidth="62.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Windows" />
+            <TextField fx:id="NumOfWindows" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fans" />
+            <TextField fx:id="NumOfFans" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lights" />
+            <TextField fx:id="NumOfLights" />
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
-      <Button layoutX="110.0" layoutY="218.0" mnemonicParsing="false" onAction="#btnDeleteRoom" prefHeight="25.0" prefWidth="87.0" text="Delete Room" />
-      <TextField layoutX="276.0" layoutY="27.0" prefHeight="25.0" prefWidth="191.0" text="Smart Room Controller - Team 1" />
-      <Button layoutX="642.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnImportData" prefHeight="25.0" prefWidth="87.0" text="Import Data" />
-      <Button layoutX="642.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Export Data" />
-      <Button layoutX="642.0" layoutY="125.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Room List" />
+      <Button layoutX="14.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnAddRoom" text="Add Room" />
+      <Button layoutX="110.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnDeleteRoom" prefHeight="25.0" prefWidth="87.0" text="Delete Room" />
+      <TextField layoutX="333.0" layoutY="27.0" prefHeight="25.0" prefWidth="191.0" text="Smart Room Controller - Team 1" />
+      <Button layoutX="755.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnImportData" prefHeight="25.0" prefWidth="87.0" text="Import Data" />
+      <Button layoutX="755.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Export Data" />
+      <Button layoutX="755.0" layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Room List" />
    </children>
 </AnchorPane>

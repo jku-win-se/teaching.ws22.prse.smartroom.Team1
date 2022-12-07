@@ -21,7 +21,14 @@ public class Controller implements Initializable {
 
                 LinkedList<Room> rooms = new LinkedList<>();
 
+                @FXML
+                private TextField NumOfFans;
 
+                @FXML
+                private TextField NumOfLights;
+
+                @FXML
+                private TextField NumOfWindows;
 
                 @FXML
                 private TableView<Room> RoomTableView;
