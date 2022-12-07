@@ -1,8 +1,9 @@
 package com.example.smartroom_javafx;
 
-import javax.xml.transform.Result;
+import java.io.File;
 import java.sql.*;
 import java.util.LinkedList;
+
 
 public class DatabaseConnection {
 
@@ -97,6 +98,10 @@ public class DatabaseConnection {
 
         }
         return rooms;
+    }
+
+    public void ImportFile(File excelFile) throws SQLException{
+
     }
 
 

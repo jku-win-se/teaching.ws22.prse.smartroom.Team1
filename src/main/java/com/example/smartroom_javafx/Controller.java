@@ -8,7 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -65,6 +68,14 @@ public class Controller implements Initializable {
 
 
             }
+
+        @FXML
+        void btnImportData(ActionEvent event) {
+                    FileChooser chooser = new FileChooser();
+                    File excelFile = chooser.showOpenDialog(new Stage());
+
+
+        }
 
 
         @Override
