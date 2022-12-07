@@ -2,6 +2,7 @@ package com.example.smartroom_javafx;
 
 import javax.xml.transform.Result;
 import java.sql.*;
+import java.util.LinkedList;
 
 public class DatabaseConnection {
 
@@ -80,6 +81,25 @@ public class DatabaseConnection {
         }
 
     }
+
+    public static LinkedList<Room> SelectAllRooms(LinkedList<Room> rooms) throws SQLException {
+        Statement stmtRooms = connection.createStatement();
+
+        String queryAllRooms = "SELECT " +
+                "\t\"roomID\", \"roomSize\", \"roomName\")\n" +
+                "\tFROM public.\"ROOM\"";
+
+        ResultSet rsRooms = stmtRooms.executeQuery(queryAllRooms);
+
+        while (rsRooms.next()) {
+            Room room = new Room(rsRooms.getString("roomName"), rsRooms.getInt("roomSize"),rsRooms.getInt("roomID"));
+            rooms.add(room);
+
+        }
+        return rooms;
+    }
+
+
 
 
 
