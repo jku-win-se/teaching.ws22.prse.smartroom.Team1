@@ -1,5 +1,6 @@
 package com.example.smartroom_javafx;
 
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class Room {
@@ -12,8 +13,23 @@ public class Room {
     private int temperature;
     private int co2;
 
+    DatabaseConnectionInsert insert;
+
+    {
+        try {
+            insert = new DatabaseConnectionInsert();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Room(String name, int size, int id) {
         this.id = id;
+        this.name = name;
+        this.size = size;
+    }
+
+    public Room(String name, int size) {
         this.name = name;
         this.size = size;
     }
@@ -24,6 +40,7 @@ public class Room {
         this.size = size;
         thingList.addAll(things);
     }
+
 
     public String getName(){
         return name;
@@ -77,12 +94,12 @@ public class Room {
         this.size = size;
     }
 
-    public LinkedList<Thing> getAllItems(){
-        LinkedList<Thing> items = new LinkedList<>();
+    public LinkedList<Thing> getAllThings(){
+        LinkedList<Thing> things = new LinkedList<>();
         for (Thing thing : thingList) {
-            items.add(thing);
+            things.add(thing);
         }
-        return items;
+        return things;
     }
 
     public LinkedList<Door> getAllDoors() {

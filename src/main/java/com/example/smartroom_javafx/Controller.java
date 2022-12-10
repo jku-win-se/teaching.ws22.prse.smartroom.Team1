@@ -1,109 +1,219 @@
 package com.example.smartroom_javafx;
 
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-                LinkedList<Room> rooms = new LinkedList<>();
+        public static LinkedList<Room> rooms = new LinkedList<>();
 
-                @FXML
-                private TextField NumOfFans;
-
-                @FXML
-                private TextField NumOfLights;
-
-                @FXML
-                private TextField NumOfWindows;
-
-                @FXML
-                private TableView<Room> RoomTableView;
-
-                @FXML
-                private TableColumn<Room, Integer> RoomIDColumn;
-
-                @FXML
-                private TableColumn<Room, String> RoomNameColumn;
-
-                @FXML
-                private TableColumn<Room, Integer> RoomSizeColumn;
-
-                @FXML
-                private TextField RoomIDInput;
-
-                @FXML
-                private TextField RoomNameInput;
-
-                @FXML
-                private TextField RoomSizeInput;
-
-                @FXML
-                void btnAddRoom(ActionEvent event) throws SQLException {
-                         String RoomName = RoomNameInput.getText();
-                         int RoomSize = Integer.parseInt(RoomSizeInput.getText());
-                         int RoomID = Integer.parseInt(RoomIDInput.getText());
-
-                         createRoom(RoomName, RoomSize, RoomID);
-
-
-
-
-                }
-
-            @FXML
-            void btnDeleteRoom(ActionEvent event) throws SQLException{
-                String RoomName = RoomNameInput.getText();
-                int RoomSize = Integer.parseInt(RoomSizeInput.getText());
-                int RoomID = Integer.parseInt(RoomIDInput.getText());
-
-                deleteRoom(RoomName, RoomSize, RoomID);
-
-
-
-            }
+        DatabaseConnectionInsert insert = new DatabaseConnectionInsert();
+        DatabaseConnectionDelete delete = new DatabaseConnectionDelete();
 
         @FXML
-        void btnImportData(ActionEvent event) {
-                    FileChooser chooser = new FileChooser();
-                    File excelFile = chooser.showOpenDialog(new Stage());
+        private TextField NumOfFans;
+
+        @FXML
+        private TextField NumOfLights;
+
+        @FXML
+        private TextField NumOfWindows;
+
+        @FXML
+        private TextField NumOfDoors;
+
+        @FXML
+        private ListView<Room> listRoom;
+
+        @FXML
+        private Button roomInfoButton;
+
+        @FXML
+        private TableColumn<Room, Integer> RoomIDColumn;
+
+        @FXML
+        private TableColumn<Room, String> RoomNameColumn;
+
+        @FXML
+        private TableColumn<Room, Integer> RoomSizeColumn;
+
+        @FXML
+        private TextField RoomIDInput;
+
+        @FXML
+        private TextField RoomNameInput;
+
+        @FXML
+        private TextField RoomSizeInput;
+
+    public Controller() throws SQLException {
+    }
 
 
+    @FXML
+    void btnAddRoom(ActionEvent event) throws Exception {
+
+        LinkedList<Thing> things = new LinkedList<>();
+
+        try{
+            int numOfD = Integer.parseInt(NumOfDoors.getText());
+            if (numOfD < 0) {
+                throw new InputMismatchException();
+            }else{
+                int doorId = insert.doorDataID();
+                for (int i = 0; i < numOfD; i++) {
+                    Door door = new Door("Door");
+                    door.setDoorId(doorId);
+                    things.add(door);
+                    doorId++;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Only Integers!");
+            return;
         }
 
-
-        @Override
-        public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        try{
+            int numOfF = Integer.parseInt(NumOfFans.getText());
+            if (numOfF < 0) {
+                throw new Exception();
+            }else{
+                int fanId = insert.fanDataID();
+                for (int i = 0; i < numOfF; i++) {
+                    Fan fan = new Fan("Fan");
+                    fan.setFanId(fanId);
+                    things.add(fan);
+                    fanId++;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Only Integers!");
+            return;
         }
 
-        public void createRoom(String RoomName, int RoomSize, int RoomID) throws SQLException {
-                Room room = new Room(RoomName, RoomSize, RoomID);
-                rooms.add(room);
-                DatabaseConnection.AddRoomToDatabase(room);
-
-
+        try{
+            int numOfL = Integer.parseInt(NumOfLights.getText());
+            if(numOfL < 0){
+                throw new Exception();
+            }else{
+                int lightId = insert.lightDataID();
+                for (int i = 0; i < numOfL; i++) {
+                    Light light = new Light("Light");
+                    light.setLightId(lightId);
+                    things.add(light);
+                    lightId++;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Only Integers!");
+            return;
         }
-        public void deleteRoom(String RoomName, int RoomSize, int RoomID) throws SQLException {
-        Room room = new Room(RoomName, RoomSize, RoomID);
-        rooms.remove(room);
-        DatabaseConnection.DeleteRoomFromDatabase(room);
 
-
+        try{
+            int numOfW = Integer.parseInt(NumOfWindows.getText());
+            if(numOfW < 0){
+                throw new Exception();
+            }else{
+                int windowId = insert.windowDataID();
+                for (int i = 0; i < numOfW; i++) {
+                    Window window = new Window("Window");
+                    window.setWindowId(windowId);
+                    things.add(window);
+                    windowId++;
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Only Integers!");
+            return;
         }
 
+        try{
+            if(Integer.parseInt(RoomSizeInput.getText())<0){
+                throw new Exception();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Only Integers!");
+            return;
+        }
 
+        boolean x = true;
+        for(Room room: listRoom.getItems()){
+            if (room.getId() ==  Integer.parseInt(RoomIDInput.getText())){
+                x = false;
+                break;
+            }
+        }
+
+        if(x){
+            Room room = new Room(RoomNameInput.getText(), Integer.parseInt(RoomSizeInput.getText()), things, Integer.parseInt(RoomIDInput.getText()));
+            insert.insertRoom(room);
+            listRoom.getItems().add(room);
+            //DatabaseConnection.AddRoomToDatabase(room);
+
+        }else{
+            System.out.println("Room ID already exists");
+        }
+    }
+
+    @FXML
+    void btnDeleteRoom(ActionEvent event) throws SQLException{
+        Room deletedRoom = (listRoom.getSelectionModel().getSelectedItem());
+        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
+        listRoom.getItems().remove(chosenRoom);
+        delete.databaseRoomDelete(deletedRoom);
+        rooms.remove(chosenRoom);
+    }
+
+    @FXML
+    void btnImportData(ActionEvent event) {
+                FileChooser chooser = new FileChooser();
+                File excelFile = chooser.showOpenDialog(new Stage());
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void loadRooms() throws SQLException {
+        rooms = insert.createRooms(rooms);
+        for(Room room: rooms){
+            listRoom.getItems().add(room);
+        }
+    }
+
+    @FXML
+    public void getRoomInformation(MouseEvent event) throws Exception {
+        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
+        Room room = (listRoom.getItems().get(chosenRoom));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/RoomInformation.fxml"));
+
+        RoomInformationController roomInformation = loader.getController();
+        roomInformation.initializeRoomInfo(room);
+
+        Stage stage = (Stage) roomInfoButton.getScene().getWindow();
+        Scene scene = new Scene(loader.getRoot());
+        stage.setScene(scene);
+    }
 }
