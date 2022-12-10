@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.smartroom_javafx.RoomInformation"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.RoomInformationController">
+   <children>
+      <ListView fx:id="doors" layoutX="14.0" layoutY="56.0" prefHeight="138.0" prefWidth="200.0" />
+      <ListView fx:id="windows" layoutX="300.0" layoutY="56.0" prefHeight="138.0" prefWidth="200.0" />
+      <ListView fx:id="lights" layoutX="14.0" layoutY="248.0" prefHeight="138.0" prefWidth="200.0" />
+      <ListView fx:id="fans" layoutX="300.0" layoutY="248.0" prefHeight="138.0" prefWidth="200.0" />
+      <Label layoutX="92.0" layoutY="37.0" prefHeight="18.0" prefWidth="42.0" text="Doors" />
+      <Label layoutX="368.0" layoutY="37.0" prefHeight="18.0" prefWidth="62.0" text="Windows" />
+      <Label layoutX="96.0" layoutY="229.0" prefHeight="18.0" prefWidth="34.0" text="Lights" />
+      <Label layoutX="382.0" layoutY="229.0" prefHeight="18.0" prefWidth="34.0" text="Fans" />
+   </children>
 </AnchorPane>

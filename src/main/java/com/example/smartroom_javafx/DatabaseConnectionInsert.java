@@ -18,7 +18,7 @@ public class DatabaseConnectionInsert {
         }
     }
 
-    public static void closeConn() {
+    public static void databaseConnectionClose() {
         if (connection != null) {
             try {
                 connection.close();

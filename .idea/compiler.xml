@@ -11,7 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hhhhhhhhaaaa" target="19" />
-      <module name="SmartRoom_JavaFX" target="19" />
+      <module name="SmartRoom_JavaFX" target="0" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

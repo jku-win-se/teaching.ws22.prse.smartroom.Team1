@@ -31,8 +31,8 @@
       </VBox>
       <TextField layoutX="375.0" layoutY="91.0" prefHeight="25.0" prefWidth="191.0" text="Smart Room Controller - Team 1" />
       <Button layoutX="755.0" layoutY="52.0" mnemonicParsing="false" onAction="#btnImportData" prefHeight="25.0" prefWidth="87.0" text="Import Data" />
-      <Button layoutX="755.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Export Data" />
-      <Button layoutX="755.0" layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Room List" />
+      <Button fx:id="exportRoomButton" layoutX="755.0" layoutY="91.0" mnemonicParsing="false" onAction="#exportRooms" prefHeight="25.0" prefWidth="87.0" text="Export Data" />
+      <Button fx:id="roomInfoButton" layoutX="755.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#getRoomInformation" prefHeight="25.0" prefWidth="87.0" text="Room Info" />
       <Button layoutX="427.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnDeleteRoom" prefHeight="25.0" prefWidth="87.0" text="Delete Room" />
       <ListView fx:id="listRoom" layoutX="328.0" layoutY="143.0" prefHeight="200.0" prefWidth="285.0" />
    </children>

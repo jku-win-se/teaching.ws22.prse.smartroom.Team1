@@ -11,6 +11,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
@@ -43,6 +44,9 @@ public class Controller implements Initializable {
         private Button roomInfoButton;
 
         @FXML
+        private Button exportRoomButton;
+
+        @FXML
         private TableColumn<Room, Integer> RoomIDColumn;
 
         @FXML
@@ -61,6 +65,19 @@ public class Controller implements Initializable {
         private TextField RoomSizeInput;
 
     public Controller() throws SQLException {
+    }
+
+    public void initRoomsOverview() throws SQLException {
+        LinkedList<Room> backupList = new LinkedList<>();
+        backupList = (LinkedList)rooms.clone();
+        rooms.clear();
+        rooms = insert.createRooms(rooms);
+
+        backupList.clear();
+
+        for (Room room : rooms) {
+            listRoom.getItems().add(room);
+        }
     }
 
 
@@ -195,6 +212,11 @@ public class Controller implements Initializable {
 
     }
 
+    @FXML
+    void exportRooms(ActionEvent event) throws SQLException, IOException {
+        DatabaseConnectionExport export = new DatabaseConnectionExport();
+    }
+
     public void loadRooms() throws SQLException {
         rooms = insert.createRooms(rooms);
         for(Room room: rooms){
@@ -207,7 +229,7 @@ public class Controller implements Initializable {
         int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
         Room room = (listRoom.getItems().get(chosenRoom));
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/RoomInformation.fxml"));
+                Application.class.getResource("/RoomInformation.fxml"));
 
         RoomInformationController roomInformation = loader.getController();
         roomInformation.initializeRoomInfo(room);
