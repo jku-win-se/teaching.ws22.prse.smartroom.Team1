@@ -5,6 +5,7 @@ module com.example.smartroom_javafx {
     requires spring.boot.autoconfigure;
     requires spring.boot;
     requires spring.web;
+    requires org.apache.poi.ooxml;
 
 
     opens com.example.smartroom_javafx to javafx.fxml;
