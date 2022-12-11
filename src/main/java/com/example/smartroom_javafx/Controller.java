@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -226,6 +227,23 @@ public class Controller implements Initializable {
 
     @FXML
     public void getRoomInformation(MouseEvent event) throws Exception {
+        Parent root;
+        Stage stage;
+        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
+        Room room = (listRoom.getItems().get(chosenRoom));
+
+        FXMLLoader loader = new FXMLLoader(Application.class.getResource("RoomInformation.fxml"));
+
+        root = loader.load();
+
+
+        RoomInformationController roomInformation = loader.getController();
+        roomInformation.initializeRoomInfo(room);
+
+        stage = (Stage) roomInfoButton.getScene().getWindow();
+        Scene scene = new Scene(loader.getRoot());
+        stage.setScene(scene);
+        /*
         int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
         Room room = (listRoom.getItems().get(chosenRoom));
         FXMLLoader loader = new FXMLLoader(
@@ -237,5 +255,7 @@ public class Controller implements Initializable {
         Stage stage = (Stage) roomInfoButton.getScene().getWindow();
         Scene scene = new Scene(loader.getRoot());
         stage.setScene(scene);
+
+         */
     }
 }

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.RoomInformationController">
    <children>
       <ListView fx:id="doors" layoutX="14.0" layoutY="56.0" prefHeight="138.0" prefWidth="200.0" />
@@ -15,5 +14,6 @@
       <Label layoutX="368.0" layoutY="37.0" prefHeight="18.0" prefWidth="62.0" text="Windows" />
       <Label layoutX="96.0" layoutY="229.0" prefHeight="18.0" prefWidth="34.0" text="Lights" />
       <Label layoutX="382.0" layoutY="229.0" prefHeight="18.0" prefWidth="34.0" text="Fans" />
+      <Label fx:id="roomName" layoutX="14.0" layoutY="14.0" />
    </children>
 </AnchorPane>

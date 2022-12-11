@@ -49,7 +49,7 @@ public class RoomInformationController {
 
         this.room = room;
         this.roomName.setText(room.getName());
-        roomSize.setText(String.valueOf(room.getSize())+ " m2");
+        //roomSize.setText(String.valueOf(room.getSize())+ " m2");
 
         /*Map<Timestamp, Integer> tempFromDataBase = chartData.createTempData(room);
         TreeMap<Timestamp,Integer> map = new TreeMap<>();

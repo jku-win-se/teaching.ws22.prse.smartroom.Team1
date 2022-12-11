@@ -1,5 +1,6 @@
 package com.example.smartroom_javafx;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,9 +38,9 @@ public class DatabaseConnectionExport {
             int i = 1;
             while (result.next()) {
                 XSSFRow row = sheetRoom.createRow(i);
-                row.createCell(0).setCellValue((result.getString("roomID")));
+                row.createCell(0).setCellValue((result.getInt("roomID")));
                 row.createCell(1).setCellValue(result.getInt("roomSize"));
-                row.createCell(2).setCellValue(result.getInt("roomName"));
+                row.createCell(2).setCellValue(result.getString("roomName"));
                 i++;
             }
             IntStream.range(0, columnOfRoom.length - 1).forEach(sheetRoom::autoSizeColumn);
@@ -116,7 +117,8 @@ public class DatabaseConnectionExport {
                 i++;
             }
 
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Flori\\smartroom\\SmartRoomExport.xlsx");
+            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\ilker\\OneDrive\\Desktop\\Export\\SmartRoomExportTEST.xlsx");
+            //cannot save in "C:"
             wb.write(outputStream);
             outputStream.close();
             System.out.println("Export Success!");
