@@ -13,6 +13,7 @@ public class Door extends Thing {
         this.doorId = id;
     }
 
+
     public void setDoorId(int doorId) {
         this.doorId = doorId;
     }
