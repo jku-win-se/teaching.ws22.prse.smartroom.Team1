@@ -6,16 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Server" />
         <module name="SmartRoom_JavaFX" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hhhhhhhhaaaa" target="19" />
-      <module name="SmartRoom_JavaFX" target="0" />
+      <module name="Server" target="19" />
+      <module name="SmartRoom_JavaFX" target="19" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Server" options="-parameters" />
       <module name="SmartRoom_JavaFX" options="-parameters" />
     </option>
   </component>
