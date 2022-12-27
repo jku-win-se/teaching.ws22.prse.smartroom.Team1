@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class WindowTest {
 
-    @Test
+  /*  @Test
     void TestWindow() {
         Window window = new Window("window");
         Assertions.assertNotNull(window);
@@ -32,5 +32,5 @@ class WindowTest {
         window.setSetting(true);
         Assertions.assertTrue(window.getSetting());
         Assertions.assertEquals("East Window 12 open", window.toString());
-    }
+    }*/
 }

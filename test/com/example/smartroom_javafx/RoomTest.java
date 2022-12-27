@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class RoomTest {
 
-    @Test
+   /* @Test
     void TestRoom() {
         Room room = new Room("Wohnzimmer", 120, 283);
         Assertions.assertNotNull(room);
@@ -18,5 +18,5 @@ class RoomTest {
         room.setName("Kitchen");
         Assertions.assertEquals("Kitchen", room.getName());
 
-    }
+    }*/
 }

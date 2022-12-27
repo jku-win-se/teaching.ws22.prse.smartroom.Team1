@@ -80,15 +80,30 @@ public class Controller implements Initializable {
                 + ",\"windows\":" + NumOfWindows + ",\"fans\":" + NumOfFans + ",\"doors\":" + NumOfDoors
                 + ",\"lights\":" + NumOfLights + "}";
 
-        HttpRequest request = HttpRequest.newBuilder()
+       /* HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/rooms"))
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                 .setHeader("Content-Type", "application/json")
                 .build();
 
+
         try {
             HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException e) {
+        */
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri((URI.create("http://localhost:8080/rooms/" + requestBody)))
+                .POST(HttpRequest.BodyPublishers.noBody()).build();
+        try {
+            HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException e) {
+            System.out.println("http IOException" + e);
+        } catch (InterruptedException e) {
+
+
+
+
 
 
         }

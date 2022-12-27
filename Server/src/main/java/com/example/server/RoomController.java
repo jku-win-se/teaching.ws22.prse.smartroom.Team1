@@ -24,12 +24,12 @@ public class RoomController {
 
     @PostMapping("/rooms")
     public void CreateRoom (@RequestParam Optional<String> name,
-                            @RequestParam String size,
-                            @RequestParam String id,
-                            @RequestParam String windows,
-                            @RequestParam String fans,
-                            @RequestParam String doors,
-                            @RequestParam String lights
+                            @RequestParam Optional<String> size,
+                            @RequestParam Optional<String> id,
+                            @RequestParam Optional<String> windows,
+                            @RequestParam Optional<String> fans,
+                            @RequestParam Optional<String> doors,
+                            @RequestParam Optional<String> lights
                             ) {
         /*
         Room room = new Room(name, size, 1);
@@ -46,24 +46,31 @@ try {
          */
 
 
+        if (name.isPresent()) {
+            Object name2 = name.get();
+            System.out.println("Name" + name2);
+            // Verwenden Sie den Wert hier
+        } else {
+            // optional enthält keinen Wert, führen Sie stattdessen eine Alternative aus
+            System.out.println("No value");
+        }
 
+        //String name2 = name.get();
 
-        String name2 = name.get();
-
-        System.out.println("Name: " + name2);
-
-
-
-        int size2 = Integer.parseInt(size);
-        int id2 = Integer.parseInt(id);
-        int windows2 = Integer.parseInt(windows);
-        int fans2 = Integer.parseInt(fans);
-        int doors2 = Integer.parseInt(doors);
-        int lights2 = Integer.parseInt(lights);
-
+        //System.out.println("Name: " + name2);
 
 
 
+        int size2 = Integer.parseInt(size.get());
+        int id2 = Integer.parseInt(id.get());
+        int windows2 = Integer.parseInt(windows.get());
+        int fans2 = Integer.parseInt(fans.get());
+        int doors2 = Integer.parseInt(doors.get());
+        int lights2 = Integer.parseInt(lights.get());
+
+
+
+/*
         LinkedList<Thing> things = new LinkedList<>();
 
         try{
@@ -174,7 +181,7 @@ try {
 
 
 
-    }
+    */}
 
 
 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class FanTest {
 
-    @Test
+    /*@Test
     void TestFan(){
         Fan fan = new Fan("fan");
         Assertions.assertNotNull(fan);
@@ -32,6 +32,6 @@ class FanTest {
         fan.setSetting(true);
         Assertions.assertTrue(fan.getSetting());
         Assertions.assertEquals("Mican Fan 5 on", fan.toString());
-    }
+    }*/
 
 }

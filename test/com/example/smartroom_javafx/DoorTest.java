@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class DoorTest {
 
-    @Test
+   /* @Test
     void TestDoor() {
         Door door = new Door("door");
         Assertions.assertNotNull(door);
@@ -33,5 +33,5 @@ class DoorTest {
         Assertions.assertTrue(door.getSetting());
         Assertions.assertEquals("Kitchen Door 3 unlocked", door.toString());
 
-    }
+    }*/
 }
