@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 public class RoomInformationController {
 
+    /*
+
     Room room;
     DatabaseConnectionInsert insert = new DatabaseConnectionInsert();
     DatabaseConnectionDelete delete = new DatabaseConnectionDelete();
@@ -60,5 +62,7 @@ public class RoomInformationController {
             this.windows.getItems().add(window);
         }
     }
+
+     */
 
 }

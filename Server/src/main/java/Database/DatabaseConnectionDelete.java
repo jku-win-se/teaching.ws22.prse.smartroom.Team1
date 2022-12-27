@@ -1,4 +1,6 @@
-package com.example.smartroom_javafx;
+package Database;
+
+import Objekte.Room;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

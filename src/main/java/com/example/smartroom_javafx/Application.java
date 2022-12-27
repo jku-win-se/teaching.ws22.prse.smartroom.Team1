@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.io.*;
 import java.sql.SQLException;
 
 public class Application extends javafx.application.Application {
@@ -29,8 +28,11 @@ public class Application extends javafx.application.Application {
 
         stage.setOnCloseRequest(new EventHandler<>() {
             public void handle(WindowEvent windowEvent) {
+                /*
                 DatabaseConnectionInsert.databaseConnectionClose();
                 DatabaseConnectionDelete.databaseConnectionClose();
+
+                 */
             }
         });
 

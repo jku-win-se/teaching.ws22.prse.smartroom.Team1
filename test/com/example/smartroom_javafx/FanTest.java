@@ -3,8 +3,6 @@ package com.example.smartroom_javafx;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class FanTest {
 
     @Test

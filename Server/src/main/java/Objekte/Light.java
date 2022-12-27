@@ -1,4 +1,4 @@
-package com.example.smartroom_javafx;
+package Objekte;
 
 public class Light extends Thing {
 

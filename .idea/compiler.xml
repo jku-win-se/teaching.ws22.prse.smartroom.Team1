@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hhhhhhhhaaaa" target="19" />
-      <module name="Server" target="19" />
+      <module name="Server" target="17" />
       <module name="SmartRoom_JavaFX" target="19" />
     </bytecodeTargetLevel>
   </component>
