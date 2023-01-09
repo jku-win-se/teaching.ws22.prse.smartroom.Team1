@@ -15,6 +15,7 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
+        System.out.println("Test");
 
         Parent root = fxmlLoader.load();
 
