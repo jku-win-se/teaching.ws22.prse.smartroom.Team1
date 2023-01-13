@@ -25,8 +25,7 @@ public class DatabaseConnectionExport {
 
 
             //-----ROOM
-            ResultSet result = statm.
-                    executeQuery("Select * From public.\"ROOM\"");
+            ResultSet result = statm.executeQuery("Select * From public.\"ROOM\"");
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheetRoom = wb.createSheet("ROOM");
             String[] columnOfRoom = {"roomID", "roomSize", "roomName"};
@@ -36,12 +35,14 @@ public class DatabaseConnectionExport {
                 cell.setCellValue(columnOfRoom[i]);
             });
             int i = 1;
-            while (result.next()) {
-                XSSFRow row = sheetRoom.createRow(i);
-                row.createCell(0).setCellValue((result.getInt("roomID")));
-                row.createCell(1).setCellValue(result.getInt("roomSize"));
-                row.createCell(2).setCellValue(result.getString("roomName"));
-                i++;
+            if (result.next()) {
+                do {
+                    XSSFRow row = sheetRoom.createRow(i);
+                    row.createCell(0).setCellValue((result.getInt("roomID")));
+                    row.createCell(1).setCellValue(result.getInt("roomSize"));
+                    row.createCell(2).setCellValue(result.getString("roomName"));
+                    i++;
+                } while (result.next());
             }
             IntStream.range(0, columnOfRoom.length - 1).forEach(sheetRoom::autoSizeColumn);
 
@@ -56,11 +57,13 @@ public class DatabaseConnectionExport {
                 cell.setCellValue(columnOfDoor[k]);
             });
             i = 1;
-            while (result.next()) {
-                XSSFRow row = sheetDoor.createRow(i);
-                row.createCell(0).setCellValue((result.getInt("doorID")));
-                row.createCell(1).setCellValue(result.getInt("roomID"));
-                i++;
+            if (result.next()) {
+                do {
+                    XSSFRow row = sheetDoor.createRow(i);
+                    row.createCell(0).setCellValue((result.getInt("doorID")));
+                    row.createCell(1).setCellValue(result.getInt("roomID"));
+                    i++;
+                } while (result.next());
             }
 
 
@@ -74,11 +77,13 @@ public class DatabaseConnectionExport {
                 cell.setCellValue(columnOfGlasswindow[k]);
             });
             i = 1;
-            while (result.next()) {
-                XSSFRow row = sheetGlasswindow.createRow(i);
-                row.createCell(0).setCellValue((result.getInt("windowID")));
-                row.createCell(1).setCellValue(result.getInt("roomID"));
-                i++;
+            if (result.next()) {
+                do {
+                    XSSFRow row = sheetGlasswindow.createRow(i);
+                    row.createCell(0).setCellValue((result.getInt("windowID")));
+                    row.createCell(1).setCellValue(result.getInt("roomID"));
+                    i++;
+                } while (result.next());
             }
 
 
@@ -92,11 +97,13 @@ public class DatabaseConnectionExport {
                 cell.setCellValue(columnOfFan[k]);
             });
             i = 1;
-            while (result.next()) {
-                XSSFRow row = sheetFan.createRow(i);
-                row.createCell(0).setCellValue((result.getInt("fanID")));
-                row.createCell(1).setCellValue(result.getInt("roomID"));
-                i++;
+            if (result.next()) {
+                do {
+                    XSSFRow row = sheetFan.createRow(i);
+                    row.createCell(0).setCellValue((result.getInt("fanID")));
+                    row.createCell(1).setCellValue(result.getInt("roomID"));
+                    i++;
+                } while (result.next());
             }
 
 
@@ -110,11 +117,13 @@ public class DatabaseConnectionExport {
                 cell.setCellValue(columnOfLight[k]);
             });
             i = 1;
-            while (result.next()) {
-                XSSFRow row = sheetLight.createRow(i);
-                row.createCell(0).setCellValue((result.getInt("lightID")));
-                row.createCell(1).setCellValue(result.getInt("roomID"));
-                i++;
+            if (result.next()) {
+                do {
+                    XSSFRow row = sheetLight.createRow(i);
+                    row.createCell(0).setCellValue((result.getInt("lightID")));
+                    row.createCell(1).setCellValue(result.getInt("roomID"));
+                    i++;
+                } while (result.next());
             }
 
             FileOutputStream outputStream = new FileOutputStream("C:\\Users\\ilker\\OneDrive\\Desktop\\Export\\SmartRoomExportTEST.xlsx");

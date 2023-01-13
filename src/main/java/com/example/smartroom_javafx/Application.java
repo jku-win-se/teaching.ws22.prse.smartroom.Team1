@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -14,11 +15,10 @@ import java.sql.SQLException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.
+                getResource("DigitalTwinSceneBuilder.fxml"));
 
         Parent root = fxmlLoader.load();
-
-        //Scene scene = new Scene(fxmlLoader.load(), 700, 450);
 
         Controller controller = fxmlLoader.getController();
         controller.loadRooms();

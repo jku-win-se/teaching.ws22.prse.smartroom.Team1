@@ -4,10 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -65,22 +71,10 @@ public class Controller implements Initializable {
         @FXML
         private TextField RoomSizeInput;
 
+
+
     public Controller() throws SQLException {
     }
-
-    public void initRoomsOverview() throws SQLException {
-        LinkedList<Room> backupList = new LinkedList<>();
-        backupList = (LinkedList)rooms.clone();
-        rooms.clear();
-        rooms = insert.createRooms(rooms);
-
-        backupList.clear();
-
-        for (Room room : rooms) {
-            listRoom.getItems().add(room);
-        }
-    }
-
 
     @FXML
     void btnAddRoom(ActionEvent event) throws Exception {
@@ -202,9 +196,10 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void btnImportData(ActionEvent event) {
-                FileChooser chooser = new FileChooser();
-                File excelFile = chooser.showOpenDialog(new Stage());
+    void btnImportData(ActionEvent event) throws SQLException {
+        FileChooser chooser = new FileChooser();
+        File excelFile = chooser.showOpenDialog(new Stage());
+        DatabaseConnectionImport.ImportData readData = new DatabaseConnectionImport.ImportData(excelFile);
     }
 
 
@@ -243,19 +238,8 @@ public class Controller implements Initializable {
         stage = (Stage) roomInfoButton.getScene().getWindow();
         Scene scene = new Scene(loader.getRoot());
         stage.setScene(scene);
-        /*
-        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
-        Room room = (listRoom.getItems().get(chosenRoom));
-        FXMLLoader loader = new FXMLLoader(
-                Application.class.getResource("/RoomInformation.fxml"));
+    }
 
-        RoomInformationController roomInformation = loader.getController();
-        roomInformation.initializeRoomInfo(room);
-
-        Stage stage = (Stage) roomInfoButton.getScene().getWindow();
-        Scene scene = new Scene(loader.getRoot());
-        stage.setScene(scene);
-
-         */
+    public void initializeRoomInfo(Room room) {
     }
 }
