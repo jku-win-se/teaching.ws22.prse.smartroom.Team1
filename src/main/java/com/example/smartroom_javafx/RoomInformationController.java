@@ -87,5 +87,8 @@ public class RoomInformationController {
         stage = (Stage) homepageButton.getScene().getWindow();
         Scene scene = new Scene(fxmlloader.getRoot());
         stage.setScene(scene);
+        //controller.loadRooms2();
     }
+
+
 }

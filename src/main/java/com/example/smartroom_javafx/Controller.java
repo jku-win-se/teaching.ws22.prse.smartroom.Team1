@@ -200,6 +200,7 @@ public class Controller implements Initializable {
         FileChooser chooser = new FileChooser();
         File excelFile = chooser.showOpenDialog(new Stage());
         DatabaseConnectionImport.ImportData readData = new DatabaseConnectionImport.ImportData(excelFile);
+        loadRooms();
     }
 
 
@@ -219,6 +220,14 @@ public class Controller implements Initializable {
             listRoom.getItems().add(room);
         }
     }
+    /*
+    public void loadRooms2() throws SQLException {
+        for(Room room: rooms){
+            listRoom.getItems().add(room);
+        }
+    }
+
+     */
 
     @FXML
     public void getRoomInformation(MouseEvent event) throws Exception {

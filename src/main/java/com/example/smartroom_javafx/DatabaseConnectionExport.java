@@ -126,7 +126,7 @@ public class DatabaseConnectionExport {
                 } while (result.next());
             }
 
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\ilker\\OneDrive\\Desktop\\Export\\SmartRoomExportTEST.xlsx");
+            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\gabho\\OneDrive\\Bloatware\\Desktop\\Export\\SmartRoomExportTEST.xlsx");
             //cannot save in "C:"
             wb.write(outputStream);
             outputStream.close();

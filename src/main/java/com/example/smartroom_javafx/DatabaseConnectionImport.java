@@ -21,17 +21,25 @@ public class DatabaseConnectionImport {
     public static class ImportData {
         private Connection connection;
         private final String SQL_INSERT_ROOM = "INSERT INTO public.\"ROOM\"(\n" +
-                "\t\"roomName\", \"roomSize\", \"roomID\")\n" +
+                "\t\"roomID\", \"roomSize\", \"roomName\")\n" +
                 "\tVALUES (?, ?, ?);";
-        private final String SQL_INSERT_VENTILATOR = "INSERT INTO public.\"FAN\"(\n" +
-                "\t\"fanID\", \"roomID\")\n" +
-                "\tVALUES (?, ?);";
         private final String SQL_INSERT_DOOR = "INSERT INTO public.\"DOOR\"(\n" +
-                "\t\"doorID\")\n" +
-                "\tVALUES (?);";
+                "\t\"doorID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
         private final String SQL_INSERT_WINDOW = "INSERT INTO public.\"GLASSWINDOW\"(\n" +
                 "\t\"windowID\", \"roomID\")\n" +
                 "\tVALUES (?, ?);";
+        private final String SQL_INSERT_VENTILATOR = "INSERT INTO public.\"FAN\"(\n" +
+                "\t\"fanID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+        private String SQL_INSERT_LIGHT = "INSERT INTO public.\"LIGHT\"(\n" +
+                "\t\"lightID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+
+
 
         public ImportData(File file) throws SQLException {
             try {
@@ -46,17 +54,20 @@ public class DatabaseConnectionImport {
                     System.out.println(sh.getSheetName());
                     System.out.println("-------------------");
                     int rows = sh.getLastRowNum();
-                    if (sh.getSheetName().equals("Room")) {
+                    if (sh.getSheetName().equals("ROOM")) {
                         insertData(SQL_INSERT_ROOM, rows, sh);
                     }
-                    if (sh.getSheetName().equals("Ventilator")) {
-                        insertData(SQL_INSERT_VENTILATOR, rows, sh);
-                    }
-                    if (sh.getSheetName().equals("Door")) {
+                    if (sh.getSheetName().equals("DOOR")) {
                         insertData(SQL_INSERT_DOOR, rows, sh);
                     }
-                    if (sh.getSheetName().equals("Window")) {
+                    if (sh.getSheetName().equals("GLASSWINDOW")) {
                         insertData(SQL_INSERT_WINDOW, rows, sh);
+                    }
+                    if (sh.getSheetName().equals("FAN")) {
+                        insertData(SQL_INSERT_VENTILATOR, rows, sh);
+                    }
+                    if (sh.getSheetName().equals("LIGHT")) {
+                        insertData(SQL_INSERT_LIGHT, rows, sh);
                     }
                 }
                 connection.close();
@@ -70,14 +81,19 @@ public class DatabaseConnectionImport {
                 for (int r = 1; r <= rows; r++) { //we do not need the header
                     Row row = sh.getRow(r);
                     if (sql.equals(SQL_INSERT_ROOM)) {
-                        pstmt.setString(1, row.getCell(0).getStringCellValue());
+                        pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
+                        pstmt.setInt(2, (int) row.getCell(1).getNumericCellValue());
+                        pstmt.setString(3, row.getCell(2).getStringCellValue());
+                    } else if (sql.equals(SQL_INSERT_DOOR)) {
+                        pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
+                        pstmt.setInt(2, (int) row.getCell(1).getNumericCellValue());
+                    } else if (sql.equals(SQL_INSERT_WINDOW)) {
+                        pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
                         pstmt.setInt(2, (int) row.getCell(1).getNumericCellValue());
                     } else if (sql.equals(SQL_INSERT_VENTILATOR)) {
                         pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
                         pstmt.setInt(2, (int) row.getCell(1).getNumericCellValue());
-                    } else if (sql.equals(SQL_INSERT_DOOR)) {
-                        pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
-                    } else if (sql.equals(SQL_INSERT_WINDOW)) {
+                    } else if (sql.equals(SQL_INSERT_LIGHT)) {
                         pstmt.setInt(1, (int) row.getCell(0).getNumericCellValue());
                         pstmt.setInt(2, (int) row.getCell(1).getNumericCellValue());
                     }
