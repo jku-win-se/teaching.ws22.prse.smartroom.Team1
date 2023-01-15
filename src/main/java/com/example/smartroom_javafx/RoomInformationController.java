@@ -61,6 +61,26 @@ public class RoomInformationController implements Initializable {
     public RoomInformationController() throws SQLException {
     }
 
+    @FXML
+    public void initializeRoomInfo(Room room){
+
+        this.room = room;
+        this.roomName.setText(room.getName());
+
+        for (Door door : room.getAllDoors()) {
+            this.doors.getItems().add(door);
+        }
+        for (Light light : room.getAllLights()) {
+            this.lights.getItems().add(light);
+        }
+        for (Fan fan: room.getAllFans()) {
+            this.fans.getItems().add(fan);
+        }
+        for (Window window : room.getAllWindows()) {
+            this.windows.getItems().add(window);
+        }
+    }
+
     void initRoomControl(Room room) {
         this.room = room;
         this.roomName.setText(room.getName());
@@ -70,7 +90,7 @@ public class RoomInformationController implements Initializable {
     }
 
     @FXML
-    void addItem(MouseEvent event) throws SQLException {
+    void addThing(MouseEvent event) throws SQLException {
         String choosenThing = thingsChoiceBox.getValue();
         switch (choosenThing) {
             case "Window" -> {
@@ -104,27 +124,31 @@ public class RoomInformationController implements Initializable {
         }
     }
 
-
-
     @FXML
-    public void initializeRoomInfo(Room room){
+    void deleteThing(MouseEvent event) {
+        int choosenThing = thingListView.getSelectionModel().getSelectedIndex();
 
-        this.room = room;
-        this.roomName.setText(room.getName());
-
-        for (Door door : room.getAllDoors()) {
-            this.doors.getItems().add(door);
+        for (Thing thing : room.getAllThings()){
+            if (thingListView.getItems().get(choosenThing).equals(thing)) {
+                room.removeThing(thing);
+                if (thing instanceof Window){
+                    delete.databaseWindowDelete(((Window) thing).getWindowId());
+                }
+                else if (thing instanceof Door){
+                    delete.databaseDoorDelete(((Door) thing).getDoorId());
+                }
+                else if (thing instanceof Light){
+                    delete.databaseLightDelete(((Light) thing).getLightId());
+                }
+                else if (thing instanceof Fan){
+                    delete.databaseFanDelete(((Fan) thing).getFanId());
+                }
+            }
         }
-        for (Light light : room.getAllLights()) {
-            this.lights.getItems().add(light);
-        }
-        for (Fan fan: room.getAllFans()) {
-            this.fans.getItems().add(fan);
-        }
-        for (Window window : room.getAllWindows()) {
-            this.windows.getItems().add(window);
-        }
+        thingListView.getItems().remove(choosenThing);
+        thingListView.refresh();
     }
+
 
     @FXML
     void changeSettingOfThings(MouseEvent event) throws SQLException {
@@ -144,6 +168,7 @@ public class RoomInformationController implements Initializable {
             else if(thing instanceof Fan){
                 insert.insertFan(room);
             }
+            //Boolen in Database fehlt noch für den else zweig
         } else {
             if(thing instanceof  Window){
                 insert.insertWindow(room);
