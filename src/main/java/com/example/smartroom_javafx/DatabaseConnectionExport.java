@@ -126,7 +126,8 @@ public class DatabaseConnectionExport {
                 } while (result.next());
             }
 
-            FileOutputStream outputStream = new FileOutputStream("C:\\Users\\gabho\\OneDrive\\Bloatware\\Desktop\\Export\\SmartRoomExportTEST.xlsx");
+            FileOutputStream outputStream = new FileOutputStream(".\\SmartRoomExportTEST.xlsx");
+            //hiermit wird die Datei dorthin exportiert, wo sich das Projekt befindet
             //cannot save in "C:"
             wb.write(outputStream);
             outputStream.close();
