@@ -82,12 +82,18 @@ public class RoomInformationController {
         }
 
         Controller controller = fxmlloader.getController();
-        controller.initializeRoomInfo(room);
+        try {
+            controller.loadRooms2();
+            //mit loadRooms wurden die Räume in der Listview doppelt angezeigt, weil linkedlist-Methode in der DBConnectionInsert
+            //dann immer wieder räume erstellt und wieder in die liste haut
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         stage = (Stage) homepageButton.getScene().getWindow();
         Scene scene = new Scene(fxmlloader.getRoot());
         stage.setScene(scene);
-        //controller.loadRooms2();
+
     }
 
 

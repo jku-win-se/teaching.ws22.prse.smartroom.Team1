@@ -179,6 +179,7 @@ public class Controller implements Initializable {
             Room room = new Room(RoomNameInput.getText(), Integer.parseInt(RoomSizeInput.getText()), things, Integer.parseInt(RoomIDInput.getText()));
             insert.insertRoom(room);
             listRoom.getItems().add(room);
+            rooms.add(room);
             //DatabaseConnection.AddRoomToDatabase(room);
 
         }else{
@@ -192,6 +193,7 @@ public class Controller implements Initializable {
         int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
         listRoom.getItems().remove(chosenRoom);
         delete.databaseRoomDelete(deletedRoom);
+        //hier wird dann in die alte listview, die neuen hinzugefügten Räume nach dem umswitchen in eine neue Scene, hinzugefügt
         rooms.remove(chosenRoom);
     }
 
@@ -215,19 +217,19 @@ public class Controller implements Initializable {
     }
 
     public void loadRooms() throws SQLException {
+
         rooms = insert.createRooms(rooms);
         for(Room room: rooms){
             listRoom.getItems().add(room);
         }
     }
-    /*
+
     public void loadRooms2() throws SQLException {
         for(Room room: rooms){
             listRoom.getItems().add(room);
         }
     }
 
-     */
 
     @FXML
     public void getRoomInformation(MouseEvent event) throws Exception {
