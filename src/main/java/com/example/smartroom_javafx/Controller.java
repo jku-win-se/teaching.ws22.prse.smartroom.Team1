@@ -239,6 +239,7 @@ public class Controller implements Initializable {
 
         RoomInformationController roomInformation = loader.getController();
         roomInformation.initializeRoomInfo(room);
+        roomInformation.initRoomControl(room);
 
         stage = (Stage) roomInfoButton.getScene().getWindow();
         Scene scene = new Scene(loader.getRoot());
