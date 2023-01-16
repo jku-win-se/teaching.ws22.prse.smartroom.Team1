@@ -8,6 +8,7 @@
 
 <AnchorPane fx:id="chSetting" onMouseClicked="#deleteThing" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.RoomInformationController">
    <children>
+      <Button fx:id="homepageButton" layoutX="511.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
       <ListView fx:id="doors" layoutX="14.0" layoutY="56.0" prefHeight="74.0" prefWidth="105.0" />
       <ListView fx:id="windows" layoutX="130.0" layoutY="56.0" prefHeight="74.0" prefWidth="106.0" />
       <ListView fx:id="lights" layoutX="248.0" layoutY="55.0" prefHeight="74.0" prefWidth="106.0" />

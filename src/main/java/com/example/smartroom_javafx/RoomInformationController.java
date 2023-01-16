@@ -1,14 +1,20 @@
 package com.example.smartroom_javafx;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -18,6 +24,9 @@ public class RoomInformationController implements Initializable {
     Room room;
     DatabaseConnectionInsert insert = new DatabaseConnectionInsert();
     DatabaseConnectionDelete delete = new DatabaseConnectionDelete();
+
+    @FXML
+    private Button homepageButton;
 
     @FXML
     private ChoiceBox<String> thingsChoiceBox;
@@ -48,7 +57,7 @@ public class RoomInformationController implements Initializable {
 
     @FXML
     private Label roomName;
-
+    /*
     @FXML
     private Button on_offButton;
 
@@ -57,6 +66,8 @@ public class RoomInformationController implements Initializable {
 
     @FXML
     private Label roomSize;
+
+     */
 
     public RoomInformationController() throws SQLException {
     }
@@ -186,6 +197,33 @@ public class RoomInformationController implements Initializable {
             thingListView.getItems().get(choosenThing).setSetting(true);
         }
         thingListView.refresh();
+    }
+
+    @FXML
+    void goToHomepage(ActionEvent event) {
+        Parent root;
+        Stage stage;
+
+        FXMLLoader loader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Controller controller = loader.getController();
+        try {
+            controller.loadRooms2();
+            //mit loadRooms wurden die Räume in der Listview doppelt angezeigt, weil createRooms-Methode in der DBConnectionInsert
+            //dann immer wieder räume erstellt und wieder in die liste haut
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        stage = (Stage) homepageButton.getScene().getWindow();
+        Scene scene = new Scene(loader.getRoot());
+        stage.setScene(scene);
+
     }
 
     @Override

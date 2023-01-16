@@ -185,7 +185,7 @@ public class Controller implements Initializable {
             Room room = new Room(RoomNameInput.getText(), Integer.parseInt(RoomSizeInput.getText()), things, Integer.parseInt(RoomIDInput.getText()));
             insert.insertRoom(room);
             listRoom.getItems().add(room);
-            //DatabaseConnection.AddRoomToDatabase(room);
+            rooms.add(room);
 
         }else{
             System.out.println("Room ID already exists");
@@ -202,9 +202,11 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void btnImportData(ActionEvent event) {
-                FileChooser chooser = new FileChooser();
-                File excelFile = chooser.showOpenDialog(new Stage());
+    void btnImportData(ActionEvent event) throws SQLException {
+        FileChooser chooser = new FileChooser();
+        File excelFile = chooser.showOpenDialog(new Stage());
+        DatabaseConnectionImport.ImportData readData = new DatabaseConnectionImport.ImportData(excelFile);
+        loadRooms();
     }
 
 
@@ -225,6 +227,14 @@ public class Controller implements Initializable {
         }
     }
 
+    public void loadRooms2() throws SQLException {
+        for(Room room: rooms){
+            listRoom.getItems().add(room);
+        }
+    }
+
+
+
     @FXML
     public void getRoomInformation(MouseEvent event) throws Exception {
         Parent root;
@@ -244,19 +254,6 @@ public class Controller implements Initializable {
         stage = (Stage) roomInfoButton.getScene().getWindow();
         Scene scene = new Scene(loader.getRoot());
         stage.setScene(scene);
-        /*
-        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
-        Room room = (listRoom.getItems().get(chosenRoom));
-        FXMLLoader loader = new FXMLLoader(
-                Application.class.getResource("/RoomInformation.fxml"));
 
-        RoomInformationController roomInformation = loader.getController();
-        roomInformation.initializeRoomInfo(room);
-
-        Stage stage = (Stage) roomInfoButton.getScene().getWindow();
-        Scene scene = new Scene(loader.getRoot());
-        stage.setScene(scene);
-
-         */
     }
 }
