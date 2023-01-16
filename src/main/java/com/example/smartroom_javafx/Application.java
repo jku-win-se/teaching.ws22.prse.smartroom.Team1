@@ -17,7 +17,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
 
         Parent root = fxmlLoader.load();
-
+        System.out.println("Test");
         //Scene scene = new Scene(fxmlLoader.load(), 700, 450);
 
         Controller controller = fxmlLoader.getController();
