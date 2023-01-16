@@ -204,14 +204,14 @@ public class RoomInformationController implements Initializable {
         Parent root;
         Stage stage;
 
-        FXMLLoader loader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
         try {
-            root = loader.load();
+            root = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Controller controller = loader.getController();
+        Controller controller = fxmlLoader.getController();
         try {
             controller.loadRooms2();
             //mit loadRooms wurden die Räume in der Listview doppelt angezeigt, weil createRooms-Methode in der DBConnectionInsert
@@ -221,7 +221,7 @@ public class RoomInformationController implements Initializable {
         }
 
         stage = (Stage) homepageButton.getScene().getWindow();
-        Scene scene = new Scene(loader.getRoot());
+        Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
 
     }

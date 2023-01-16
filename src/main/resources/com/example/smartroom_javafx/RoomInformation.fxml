@@ -5,23 +5,72 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="chSetting" onMouseClicked="#deleteThing" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.RoomInformationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.RoomInformationController">
    <children>
-      <Button fx:id="homepageButton" layoutX="511.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-      <ListView fx:id="doors" layoutX="14.0" layoutY="56.0" prefHeight="74.0" prefWidth="105.0" />
-      <ListView fx:id="windows" layoutX="130.0" layoutY="56.0" prefHeight="74.0" prefWidth="106.0" />
-      <ListView fx:id="lights" layoutX="248.0" layoutY="55.0" prefHeight="74.0" prefWidth="106.0" />
-      <ListView fx:id="fans" layoutX="382.0" layoutY="55.0" prefHeight="74.0" prefWidth="94.0" />
-      <Label layoutX="45.0" layoutY="37.0" prefHeight="18.0" prefWidth="42.0" text="Doors" />
-      <Label layoutX="152.0" layoutY="37.0" prefHeight="18.0" prefWidth="62.0" text="Windows" />
-      <Label layoutX="284.0" layoutY="37.0" prefHeight="18.0" prefWidth="34.0" text="Lights" />
-      <Label layoutX="412.0" layoutY="37.0" prefHeight="18.0" prefWidth="34.0" text="Fans" />
-      <Label fx:id="roomName" layoutX="14.0" layoutY="14.0" />
-      <ListView fx:id="thingListView" layoutX="45.0" layoutY="200.0" prefHeight="152.0" prefWidth="170.0" />
-      <Button fx:id="changeSetting" layoutX="231.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#changeSettingOfThings" prefHeight="30.0" prefWidth="106.0" text="Change Setting" />
-      <ChoiceBox fx:id="thingsChoiceBox" layoutX="390.0" layoutY="228.0" prefWidth="150.0" />
-      <Button fx:id="addItemButton" layoutX="423.0" layoutY="268.0" mnemonicParsing="false" onMouseClicked="#addThing" prefHeight="30.0" prefWidth="106.0" text="Add Thing" />
-      <Button fx:id="deleteThing" layoutX="423.0" layoutY="321.0" mnemonicParsing="false" onMouseClicked="#deleteThing" prefHeight="30.0" prefWidth="106.0" text="Delete Thing" />
+      <ListView fx:id="thingListView" layoutX="29.0" layoutY="112.0" prefHeight="200.0" prefWidth="170.0" />
+      <Button fx:id="changeSetting" layoutX="230.0" layoutY="161.0" mnemonicParsing="false" onMouseClicked="#changeSettingOfThings" prefHeight="26.0" prefWidth="126.0" text="Change Setting" textFill="#132b84">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <ChoiceBox fx:id="thingsChoiceBox" layoutX="230.0" layoutY="237.0" prefHeight="26.0" prefWidth="126.0" />
+      <Button fx:id="deleteThing" layoutX="230.0" layoutY="197.0" mnemonicParsing="false" onMouseClicked="#deleteThing" prefHeight="26.0" prefWidth="126.0" text="Delete Thing" textFill="#132b84">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Pane layoutX="600.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Button fx:id="homepageButton" layoutX="37.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="26.0" prefWidth="126.0" text="Homepage" textFill="#132b84">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="roomName" alignment="CENTER" layoutX="27.0" layoutY="34.0" prefHeight="18.0" prefWidth="150.0" text="Room-Name" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="74.0" prefWidth="800.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="476.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="74.0" prefWidth="806.0" text="SMARTHOME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ListView fx:id="doors" layoutX="29.0" layoutY="402.0" prefHeight="120.0" prefWidth="120.0" />
+      <ListView fx:id="windows" layoutX="170.0" layoutY="401.0" prefHeight="120.0" prefWidth="120.0" />
+      <ListView fx:id="lights" layoutX="311.0" layoutY="401.0" prefHeight="120.0" prefWidth="120.0" />
+      <ListView fx:id="fans" layoutX="453.0" layoutY="401.0" prefHeight="120.0" prefWidth="120.0" />
+      <Label layoutX="68.0" layoutY="383.0" prefHeight="18.0" prefWidth="42.0" text="Doors" textFill="#132b84" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="383.0" prefHeight="18.0" prefWidth="62.0" text="Windows" textFill="#132b84" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="383.0" prefHeight="18.0" prefWidth="34.0" text="Lights" textFill="#132b84" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="496.0" layoutY="383.0" prefHeight="18.0" prefWidth="34.0" text="Fans" textFill="#132b84" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="addItemButton" layoutX="403.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#addThing" prefHeight="26.0" prefWidth="126.0" text="Add Thing" textFill="#132b84">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

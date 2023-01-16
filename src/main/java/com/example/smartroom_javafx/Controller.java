@@ -242,17 +242,17 @@ public class Controller implements Initializable {
         int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
         Room room = (listRoom.getItems().get(chosenRoom));
 
-        FXMLLoader loader = new FXMLLoader(Application.class.getResource("RoomInformation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("RoomInformation.fxml"));
 
-        root = loader.load();
+        root = fxmlLoader.load();
 
 
-        RoomInformationController roomInformation = loader.getController();
+        RoomInformationController roomInformation = fxmlLoader.getController();
         roomInformation.initializeRoomInfo(room);
         roomInformation.initRoomControl(room);
 
         stage = (Stage) roomInfoButton.getScene().getWindow();
-        Scene scene = new Scene(loader.getRoot());
+        Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
 
     }
