@@ -9,33 +9,68 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DoorTest {
 
+    //arrange
+    Door door = new Door("door");
+
     @Test
     void TestDoor() {
-        Door door = new Door("door");
+        //act + assert
         Assertions.assertNotNull(door);
         Assertions.assertEquals(0, door.getId());
         Assertions.assertEquals("door", door.getName());
+    }
 
+    @Test
+    void TestDoorSetting() {
+        //act + assert
         Assertions.assertFalse(door.getSetting());
         Assertions.assertEquals("door 0 locked", door.toString());
+    }
 
+    @Test
+    void TestChangeDoorSetting() {
+        //act
         door.setSetting(true);
+
+        //assert
         Assertions.assertTrue(door.getSetting());
         Assertions.assertEquals("door 0 unlocked", door.toString());
+    }
 
+    @Test
+    void TestSetDoorNameAndID() {
+        //act
         door.setDoorId(3);
-        Assertions.assertEquals(3, door.getDoorId());
-
         door.setName("Kitchen Door");
-        Assertions.assertEquals("Kitchen Door", door.getName());
 
+        //assert
+        Assertions.assertEquals(3, door.getDoorId());
+        Assertions.assertEquals("Kitchen Door", door.getName());
+    }
+
+
+    @Test
+    void TestSetDoor() {
+        //act
+        door.setDoorId(3);
+        door.setName("Kitchen Door");
         door.setSetting(false);
+
+        //assert
         Assertions.assertFalse(door.getSetting());
         Assertions.assertEquals("Kitchen Door 3 locked", door.toString());
+    }
 
+    @Test
+    void TestSetAndChangeDoor() {
+        //act
+        door.setDoorId(3);
+        door.setName("Kitchen Door");
+        door.setSetting(false);
         door.setSetting(true);
+
+        //assert
         Assertions.assertTrue(door.getSetting());
         Assertions.assertEquals("Kitchen Door 3 unlocked", door.toString());
-
     }
 }
