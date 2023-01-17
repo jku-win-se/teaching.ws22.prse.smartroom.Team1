@@ -13,7 +13,7 @@ class DoorTest {
     Door door = new Door("door");
 
     @Test
-    void TestDoor() {
+    void TestDoorFirst() {
         //act + assert
         Assertions.assertNotNull(door);
         Assertions.assertEquals(0, door.getId());
@@ -21,14 +21,14 @@ class DoorTest {
     }
 
     @Test
-    void TestDoorSetting() {
+    void TestDoorSecond() {
         //act + assert
         Assertions.assertFalse(door.getSetting());
         Assertions.assertEquals("door 0 locked", door.toString());
     }
 
     @Test
-    void TestChangeDoorSetting() {
+    void TestDoorThird() {
         //act
         door.setSetting(true);
 
@@ -38,7 +38,7 @@ class DoorTest {
     }
 
     @Test
-    void TestSetDoorNameAndID() {
+    void TestDoorFourth() {
         //act
         door.setDoorId(3);
         door.setName("Kitchen Door");
@@ -50,7 +50,7 @@ class DoorTest {
 
 
     @Test
-    void TestSetDoor() {
+    void TestDoorFifth() {
         //act
         door.setDoorId(3);
         door.setName("Kitchen Door");
@@ -62,7 +62,7 @@ class DoorTest {
     }
 
     @Test
-    void TestSetAndChangeDoor() {
+    void TestDoorSixth() {
         //act
         door.setDoorId(3);
         door.setName("Kitchen Door");

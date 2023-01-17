@@ -12,7 +12,7 @@ class FanTest {
     Fan fan = new Fan("fan");
 
     @Test
-    void TestFan(){
+    void TestFanFirst(){
         //act + assert
         Assertions.assertNotNull(fan);
         Assertions.assertEquals(0, fan.getId());
@@ -20,14 +20,14 @@ class FanTest {
     }
 
     @Test
-    void TestFanSetting(){
+    void TestFanSecond(){
         //act + assert
         Assertions.assertFalse(fan.getSetting());
         Assertions.assertEquals("fan 0 off", fan.toString());
     }
 
     @Test
-    void TestFanChangeSetting(){
+    void TestFanThird(){
         //act
         fan.setSetting(true);
 
@@ -37,7 +37,7 @@ class FanTest {
     }
 
     @Test
-    void TestFanSetNameAndID(){
+    void TestFanFourth(){
         //act
         fan.setFanId(5);
         fan.setName("Mican Fan");
@@ -48,7 +48,7 @@ class FanTest {
     }
 
     @Test
-    void TestSetFan(){
+    void TestFanFifth(){
         //act
         fan.setFanId(5);
         fan.setName("Mican Fan");
@@ -60,7 +60,7 @@ class FanTest {
     }
 
     @Test
-    void TestSetFanandSeeting(){
+    void TestFanSixth(){
         //act
         fan.setFanId(5);
         fan.setName("Mican Fan");
