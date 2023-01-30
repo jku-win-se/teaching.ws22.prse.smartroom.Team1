@@ -65,6 +65,10 @@ public class Controller implements Initializable {
         @FXML
         private TextField RoomSizeInput;
 
+        @FXML
+        private Button chartInfoButton;
+
+
     public Controller() throws SQLException {
     }
 
@@ -252,6 +256,28 @@ public class Controller implements Initializable {
         roomInformation.initRoomControl(room);
 
         stage = (Stage) roomInfoButton.getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.getRoot());
+        stage.setScene(scene);
+
+    }
+
+    @FXML
+    void getRoomChart(MouseEvent event) throws IOException {
+
+        Parent root;
+        Stage stage;
+        int chosenRoom = listRoom.getSelectionModel().getSelectedIndex();
+        Room room = (listRoom.getItems().get(chosenRoom));
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Charts.fxml"));
+
+        root = fxmlLoader.load();
+
+
+        Charts chartInformation = fxmlLoader.getController();
+
+
+        stage = (Stage) chartInfoButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
 
