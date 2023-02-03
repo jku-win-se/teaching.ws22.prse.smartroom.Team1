@@ -103,35 +103,30 @@ public class RoomInformationController implements Initializable {
     @FXML
     void addThing(MouseEvent event) throws SQLException {
         String choosenThing = thingsChoiceBox.getValue();
-        switch (choosenThing) {
-            case "Window" -> {
-                Window window = new Window("Window");
-                window.setWindowId(insert.windowDataID());
-                room.addThing(window);
-                insert.insertWindow(room);
-                thingListView.getItems().add(window);
-            }
-            case "Door" -> {
-                Door door = new Door("Door");
-                door.setDoorId(insert.doorDataID());
-                insert.insertDoor(room);
-                room.addThing(door);
-                thingListView.getItems().add(door);
-            }
-            case "Lights" -> {
-                Light light = new Light("Light");
-                light.setLightId(insert.lightDataID());
-                insert.insertLight(room);
-                room.addThing(light);
-                thingListView.getItems().add(light);
-            }
-            case "Fan" -> {
-                Fan fan = new Fan("Fan");
-                fan.setFanId(insert.fanDataID());
-                room.addThing(fan);
-                insert.insertFan(room);
-                thingListView.getItems().add(fan);
-            }
+        if ("Window".equals(choosenThing)) {
+            Window window = new Window("Window");
+            window.setWindowId(insert.windowDataID());
+            room.addThing(window);
+            insert.insertWindow(room);
+            thingListView.getItems().add(window);
+        } else if ("Door".equals(choosenThing)) {
+            Door door = new Door("Door");
+            door.setDoorId(insert.doorDataID());
+            insert.insertDoor(room);
+            room.addThing(door);
+            thingListView.getItems().add(door);
+        } else if ("Lights".equals(choosenThing)) {
+            Light light = new Light("Light");
+            light.setLightId(insert.lightDataID());
+            insert.insertLight(room);
+            room.addThing(light);
+            thingListView.getItems().add(light);
+        } else if ("Fan".equals(choosenThing)) {
+            Fan fan = new Fan("Fan");
+            fan.setFanId(insert.fanDataID());
+            room.addThing(fan);
+            insert.insertFan(room);
+            thingListView.getItems().add(fan);
         }
     }
 
@@ -165,39 +160,32 @@ public class RoomInformationController implements Initializable {
     void changeSettingOfThings(MouseEvent event) throws SQLException {
         int choosenThing = thingListView.getSelectionModel().getSelectedIndex();
         Thing thing = thingListView.getItems().get(choosenThing);
-        if (thingListView.getItems().get(choosenThing).getSetting()) {
-            thingListView.getItems().get(choosenThing).setSetting(false);
-            if(thing instanceof  Window){
+        boolean isSetting = thing.getSetting();
+        thing.setSetting(!isSetting);
+        if (isSetting) {
+            if (thing instanceof Window) {
                 insert.insertWindow(room);
-            }
-            else if(thing instanceof Light){
+            } else if (thing instanceof Light) {
                 insert.insertLight(room);
-            }
-            else if(thing instanceof Door){
+            } else if (thing instanceof Door) {
                 insert.insertDoor(room);
-            }
-            else if(thing instanceof Fan){
+            } else if (thing instanceof Fan) {
                 insert.insertFan(room);
             }
-            //Boolen in Database fehlt noch für den else zweig
         } else {
-            if(thing instanceof  Window){
+            if (thing instanceof Window) {
                 insert.insertWindow(room);
-            }
-            else if(thing instanceof Light){
+            } else if (thing instanceof Light) {
                 insert.insertLight(room);
-            }
-            else if(thing instanceof Door){
+            } else if (thing instanceof Door) {
                 insert.insertDoor(room);
-            }
-            else if(thing instanceof Fan) {
+            } else if (thing instanceof Fan) {
                 insert.insertFan(room);
             }
-
-            thingListView.getItems().get(choosenThing).setSetting(true);
         }
         thingListView.refresh();
     }
+
 
     @FXML
     void goToHomepage(ActionEvent event) {

@@ -26,7 +26,10 @@ public class Controller implements Initializable {
         DatabaseConnectionInsert insert = new DatabaseConnectionInsert();
         DatabaseConnectionDelete delete = new DatabaseConnectionDelete();
 
-        @FXML
+        DatabaseConnectionRandomValueInsert randomValueInsert = new DatabaseConnectionRandomValueInsert();
+
+
+    @FXML
         private TextField NumOfFans;
 
         @FXML
@@ -280,6 +283,11 @@ public class Controller implements Initializable {
         stage = (Stage) chartInfoButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
+
+        //Abspeichern random Temperatur Value mit Timestamp
+        randomValueInsert.insertTemperature(room);
+
+
 
     }
 }

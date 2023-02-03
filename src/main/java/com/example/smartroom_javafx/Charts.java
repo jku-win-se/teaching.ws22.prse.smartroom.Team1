@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -16,6 +17,27 @@ public class Charts {
 
     @FXML
     private Button homepageButton;
+
+    @FXML
+    private LineChart<?, ?> co2Chart;
+
+    @FXML
+    private LineChart<?, ?> doorChart;
+
+    @FXML
+    private LineChart<?, ?> fanChart;
+
+    @FXML
+    private LineChart<?, ?> lightChart;
+
+    @FXML
+    private LineChart<?, ?> numberOfPeopleChart;
+
+    @FXML
+    private LineChart<?, ?> temperatureChart;
+
+    @FXML
+    private LineChart<?, ?> windowChart;
 
     public void initializeRoomInfo(Room room) {
     }

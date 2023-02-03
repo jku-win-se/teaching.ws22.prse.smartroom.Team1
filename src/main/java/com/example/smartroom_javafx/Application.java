@@ -31,6 +31,7 @@ public class Application extends javafx.application.Application {
             public void handle(WindowEvent windowEvent) {
                 DatabaseConnectionInsert.databaseConnectionClose();
                 DatabaseConnectionDelete.databaseConnectionClose();
+                DatabaseConnectionRandomValueInsert.databaseConnectionClose();
             }
         });
 
