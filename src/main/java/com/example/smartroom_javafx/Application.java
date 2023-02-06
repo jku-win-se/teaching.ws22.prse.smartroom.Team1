@@ -1,5 +1,9 @@
 package com.example.smartroom_javafx;
 
+import com.example.smartroom_javafx.Controller.Controller;
+import com.example.smartroom_javafx.Database.DatabaseConnectionDelete;
+import com.example.smartroom_javafx.Database.DatabaseConnectionInsert;
+import com.example.smartroom_javafx.Database.DatabaseConnectionRandomValueInsert;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +12,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
-import java.io.*;
 import java.sql.SQLException;
 
 public class Application extends javafx.application.Application {
@@ -17,8 +20,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("DigitalTwinSceneBuilder.fxml"));
 
         Parent root = fxmlLoader.load();
-        System.out.println("Test");
-        //Scene scene = new Scene(fxmlLoader.load(), 700, 450);
+        System.out.println("Smart Room Application started.");
 
         Controller controller = fxmlLoader.getController();
         controller.loadRooms();

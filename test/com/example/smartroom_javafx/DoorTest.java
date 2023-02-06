@@ -1,11 +1,8 @@
 package com.example.smartroom_javafx;
 
+import com.example.smartroom_javafx.Objects.Door;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DoorTest {
 

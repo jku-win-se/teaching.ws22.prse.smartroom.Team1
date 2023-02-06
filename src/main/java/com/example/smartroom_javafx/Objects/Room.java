@@ -1,4 +1,6 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Objects;
+
+import com.example.smartroom_javafx.Database.DatabaseConnectionInsert;
 
 import java.sql.SQLException;
 import java.util.LinkedList;

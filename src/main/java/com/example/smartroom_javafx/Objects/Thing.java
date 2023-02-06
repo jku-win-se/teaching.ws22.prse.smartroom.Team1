@@ -1,4 +1,4 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Objects;
 
 import java.util.Date;
 

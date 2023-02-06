@@ -1,6 +1,9 @@
 package com.example.smartroom_javafx;
 import static org.junit.Assert.assertNotNull;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.example.smartroom_javafx.Database.DatabaseConnectionDelete;
+import com.example.smartroom_javafx.Objects.Room;
 import org.junit.Test;
 
 public class DatabaseConnectionDeleteTest {

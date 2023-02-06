@@ -1,5 +1,8 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Controller;
 
+import com.example.smartroom_javafx.*;
+import com.example.smartroom_javafx.Database.*;
+import com.example.smartroom_javafx.Objects.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -265,7 +268,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    void getRoomChart(MouseEvent event) throws IOException {
+    void getRoomChart(MouseEvent event) throws IOException, SQLException {
 
         Parent root;
         Stage stage;
@@ -279,13 +282,27 @@ public class Controller implements Initializable {
 
         Charts chartInformation = fxmlLoader.getController();
 
+        chartInformation.initializeRoomInfo(room);
+
+        //Abspeichern random Temperature Value mit Timestamp
+        randomValueInsert.insertTemperature(room);
+        //Abspeichern random Number of People mit Timestamp
+        randomValueInsert.insertNumberOfPeople(room);
+        //Abspeichern random CO2 Value mit Timestamp
+        randomValueInsert.insertCO2Value(room);
+
+        chartInformation.getRoomLogging(room);
+
+
 
         stage = (Stage) chartInfoButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
 
-        //Abspeichern random Temperatur Value mit Timestamp
-        randomValueInsert.insertTemperature(room);
+
+
+
+
 
 
 

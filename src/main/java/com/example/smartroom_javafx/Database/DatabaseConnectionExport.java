@@ -1,4 +1,4 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Database;
 
 import java.io.File;
 import java.io.FileNotFoundException;

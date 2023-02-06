@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Charts">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller.Charts">
    <children>
       <Label layoutX="360.0" layoutY="21.0" text="Chart Overview" />
       <Button fx:id="homepageButton" layoutX="441.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
@@ -59,7 +59,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="numberOfPeopleChart" layoutX="480.0" layoutY="128.0" prefHeight="101.0" prefWidth="101.0" title="Number of People">
+      <LineChart fx:id="numberOfPeopleChart" layoutX="479.0" layoutY="422.0" prefHeight="101.0" prefWidth="101.0" title="Number of People">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -67,5 +67,6 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
+      <Label fx:id="roomName" layoutX="551.0" layoutY="168.0" prefHeight="38.0" prefWidth="50.0" text="Label" />
    </children>
 </AnchorPane>

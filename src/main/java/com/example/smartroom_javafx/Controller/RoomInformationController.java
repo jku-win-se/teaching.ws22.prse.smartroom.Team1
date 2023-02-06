@@ -1,5 +1,9 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Controller;
 
+import com.example.smartroom_javafx.*;
+import com.example.smartroom_javafx.Database.DatabaseConnectionDelete;
+import com.example.smartroom_javafx.Database.DatabaseConnectionInsert;
+import com.example.smartroom_javafx.Objects.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,17 +61,7 @@ public class RoomInformationController implements Initializable {
 
     @FXML
     private Label roomName;
-    /*
-    @FXML
-    private Button on_offButton;
 
-    @FXML
-    private Button getHomeScreen;
-
-    @FXML
-    private Label roomSize;
-
-     */
 
     public RoomInformationController() throws SQLException {
     }

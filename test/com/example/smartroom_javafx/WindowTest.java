@@ -1,5 +1,6 @@
 package com.example.smartroom_javafx;
 
+import com.example.smartroom_javafx.Objects.Window;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,9 @@
-package com.example.smartroom_javafx;
+package com.example.smartroom_javafx.Controller;
 
 
+import com.example.smartroom_javafx.Application;
+import com.example.smartroom_javafx.Database.DatabaseConnectionGetLogging;
+import com.example.smartroom_javafx.Objects.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +11,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class Charts {
+
+    DatabaseConnectionGetLogging randomValueInsert = new DatabaseConnectionGetLogging();
+
+    Room room;
 
     @FXML
     private Button homepageButton;
@@ -39,7 +47,33 @@ public class Charts {
     @FXML
     private LineChart<?, ?> windowChart;
 
-    public void initializeRoomInfo(Room room) {
+    @FXML
+    private Label roomName;
+
+    public Charts() throws SQLException {
+    }
+
+    public void initializeRoomInfo(Room room){
+
+        this.room = room;
+        this.roomName.setText(room.getName());
+
+
+    }
+
+    public void getRoomLogging(Room room) throws SQLException {
+
+        this.room = room;
+
+        System.out.println(room.getId());
+
+        DatabaseConnectionGetLogging.SelectAllTemperatureLoggings(room);
+        DatabaseConnectionGetLogging.SelectAllNumberOfPeopleLogging(room);
+        DatabaseConnectionGetLogging.SelectCO2Logging(room);
+
+
+
+
     }
 
     @FXML
@@ -68,4 +102,6 @@ public class Charts {
         stage.setScene(scene);
 
     }
+
+
 }
