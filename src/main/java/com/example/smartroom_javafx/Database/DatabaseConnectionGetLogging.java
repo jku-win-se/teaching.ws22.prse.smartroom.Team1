@@ -90,6 +90,7 @@ public class DatabaseConnectionGetLogging {
             System.out.println("Temperature Logging -> roomID: " + logging.getRoomID() + " co2:" + logging.getCo2Value() + " timestamp:" + logging.getTimestamp());
 
         }
+
         return CO2ValueLoggings;
 
     }
