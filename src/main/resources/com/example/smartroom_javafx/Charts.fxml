@@ -6,12 +6,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller.Charts">
    <children>
-      <Label layoutX="360.0" layoutY="21.0" text="Chart Overview" />
-      <Button fx:id="homepageButton" layoutX="441.0" layoutY="17.0" mnemonicParsing="false" onAction="#goToHomepage" text="Homepage" />
-      <LineChart fx:id="temperatureChart" layoutX="74.0" layoutY="128.0" prefHeight="145.0" prefWidth="206.0" title="Room Temperature">
+      <LineChart fx:id="temperatureChart" layoutX="4.0" layoutY="113.0" prefHeight="145.0" prefWidth="206.0" title="Room Temperature">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -19,7 +19,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="co2Chart" layoutX="280.0" layoutY="128.0" prefHeight="130.0" prefWidth="183.0" title="CO2">
+      <LineChart fx:id="co2Chart" layoutX="200.0" layoutY="113.0" prefHeight="130.0" prefWidth="183.0" title="CO2">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -27,7 +27,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="lightChart" layoutX="77.0" layoutY="278.0" prefHeight="120.0" prefWidth="174.0" title="Lights">
+      <LineChart fx:id="lightChart" layoutX="72.0" layoutY="278.0" prefHeight="120.0" prefWidth="174.0" title="Lights">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -35,7 +35,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="doorChart" layoutX="77.0" layoutY="422.0" prefHeight="150.0" prefWidth="164.0" title="Doors">
+      <LineChart fx:id="doorChart" layoutX="72.0" layoutY="422.0" prefHeight="150.0" prefWidth="164.0" title="Doors">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -43,7 +43,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="fanChart" layoutX="277.0" layoutY="422.0" prefHeight="124.0" prefWidth="200.0" title="Fans">
+      <LineChart fx:id="fanChart" layoutX="323.0" layoutY="422.0" prefHeight="124.0" prefWidth="200.0" title="Fans">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -51,7 +51,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="windowChart" layoutX="277.0" layoutY="278.0" prefHeight="31.0" prefWidth="19.0" title="Windows">
+      <LineChart fx:id="windowChart" layoutX="323.0" layoutY="278.0" prefHeight="31.0" prefWidth="19.0" title="Windows">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -59,7 +59,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="numberOfPeopleChart" layoutX="479.0" layoutY="422.0" prefHeight="101.0" prefWidth="101.0" title="Number of People">
+      <LineChart fx:id="numberOfPeopleChart" layoutX="394.0" layoutY="113.0" prefHeight="101.0" prefWidth="101.0" title="Number of People">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -67,6 +67,28 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Label fx:id="roomName" layoutX="551.0" layoutY="168.0" prefHeight="38.0" prefWidth="50.0" text="Label" />
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="530.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" layoutY="-2.0" prefHeight="76.0" prefWidth="800.0" text="CHART-OVERVIEW" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Button fx:id="homepageButton" layoutX="37.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="26.0" prefWidth="126.0" text="Homepage" textFill="#132b84">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="roomName" alignment="CENTER" layoutX="39.0" layoutY="34.0" prefHeight="38.0" prefWidth="126.0" text="Room-Name" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

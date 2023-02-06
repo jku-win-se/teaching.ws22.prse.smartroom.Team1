@@ -12,7 +12,7 @@ public class DatabaseConnectionDelete {
     static String username = "postgres";
     static String password = "user123";
     static String URL = "jdbc:postgresql://localhost/postgres";
-    static Connection connection;
+    public static Connection connection;
 
     public DatabaseConnectionDelete() {
         try {

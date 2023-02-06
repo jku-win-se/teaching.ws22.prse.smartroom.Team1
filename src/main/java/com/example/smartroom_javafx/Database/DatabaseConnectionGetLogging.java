@@ -67,7 +67,7 @@ public class DatabaseConnectionGetLogging {
         while (rsNumberOfPeopleLogging.next()) {
             NumberOfPeopleLogging logging = new NumberOfPeopleLogging(rsNumberOfPeopleLogging.getTimestamp("timestamp"), rsNumberOfPeopleLogging.getInt("numberOfPeople"),rsNumberOfPeopleLogging.getInt("roomID"));
             roomNumberOfPeopleLoggings.add(logging);
-            System.out.println("Temperature Logging -> roomID: " + logging.getRoomID() + " number of people:" + logging.getNumberOfPeople() + " timestamp:" + logging.getTimestamp());
+            System.out.println("Number of People Logging -> roomID: " + logging.getRoomID() + " number of people:" + logging.getNumberOfPeople() + " timestamp:" + logging.getTimestamp());
 
         }
         return roomNumberOfPeopleLoggings;
@@ -87,7 +87,7 @@ public class DatabaseConnectionGetLogging {
         while (rsCO2ValueLogging.next()) {
             CO2Logging logging = new CO2Logging(rsCO2ValueLogging.getTimestamp("timestamp"), rsCO2ValueLogging.getInt("co2"),rsCO2ValueLogging.getInt("roomID"));
             CO2ValueLoggings.add(logging);
-            System.out.println("Temperature Logging -> roomID: " + logging.getRoomID() + " co2:" + logging.getCo2Value() + " timestamp:" + logging.getTimestamp());
+            System.out.println("CO2 Value Logging -> roomID: " + logging.getRoomID() + " co2:" + logging.getCo2Value() + " timestamp:" + logging.getTimestamp());
 
         }
 
