@@ -3,6 +3,9 @@ package com.example.smartroom_javafx.Controller;
 
 import com.example.smartroom_javafx.Application;
 import com.example.smartroom_javafx.Database.DatabaseConnectionGetLogging;
+import com.example.smartroom_javafx.Loggings.CO2Logging;
+import com.example.smartroom_javafx.Loggings.NumberOfPeopleLogging;
+import com.example.smartroom_javafx.Loggings.TemperatureLogging;
 import com.example.smartroom_javafx.Objects.Room;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
 
 public class Charts {
 
@@ -67,11 +77,79 @@ public class Charts {
 
         System.out.println(room.getId());
 
-        DatabaseConnectionGetLogging.SelectAllTemperatureLoggings(room);
-        DatabaseConnectionGetLogging.SelectAllNumberOfPeopleLogging(room);
-        DatabaseConnectionGetLogging.SelectCO2Logging(room);
+        LinkedList<TemperatureLogging> roomTemperatureLoggings = DatabaseConnectionGetLogging.SelectAllTemperatureLoggings(room);
+        LinkedList<NumberOfPeopleLogging> roomNumberOfPeopleLoggings = DatabaseConnectionGetLogging.SelectAllNumberOfPeopleLogging(room);
+        LinkedList<CO2Logging> CO2ValueLoggings = DatabaseConnectionGetLogging.SelectCO2Logging(room);
 
 
+
+        XYChart.Series temperatureSeries = new XYChart.Series();
+        temperatureSeries.setName("temperature");
+        long firstTimestamp = roomTemperatureLoggings.get(0).getTimestamp().getTime();
+        long lastTimestamp = roomTemperatureLoggings.get(roomTemperatureLoggings.size() - 1).getTimestamp().getTime();
+
+        for (int i = 0; i < roomTemperatureLoggings.size(); i++) {
+            TemperatureLogging log = roomTemperatureLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            temperatureSeries.getData().add(new XYChart.Data(timestamp, log.getTemperature()));
+        }
+
+        NumberAxis xAxis = (NumberAxis) temperatureChart.getXAxis();
+        xAxis.setLowerBound(firstTimestamp);
+        xAxis.setUpperBound(lastTimestamp);
+        xAxis.setAutoRanging(false);
+        xAxis.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        temperatureChart.getData().add(temperatureSeries);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        for (int i = 0; i < roomNumberOfPeopleLoggings.size(); i++) {
+            //numberOfPeopleChart
+            //series.getData().add(new XYChart.Data(entry.getKey().toString(), entry.getValue()));
+        }
+
+        for (int i = 0; i < CO2ValueLoggings.size(); i++) {
+            //co2Chart
+            //series.getData().add(new XYChart.Data(entry.getKey().toString(), entry.getValue()));
+        }
 
 
     }
