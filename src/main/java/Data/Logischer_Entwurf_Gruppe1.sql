@@ -120,3 +120,83 @@ ALTER TABLE "LIGHT_LOGGING" ADD FOREIGN KEY ("lightID") REFERENCES "LIGHT" ("lig
 ALTER TABLE "ROOM_TEMPERATURE_LOGGING" ADD FOREIGN KEY ("roomID") REFERENCES "ROOM" ("roomID") ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE "ROOM_PEOPLE_LOGGING" ADD FOREIGN KEY ("roomID") REFERENCES "ROOM" ("roomID") ON UPDATE CASCADE ON DELETE CASCADE;
 ALTER TABLE "ROOM_CO2_LOGGING" ADD FOREIGN KEY ("roomID") REFERENCES "ROOM" ("roomID") ON UPDATE CASCADE ON DELETE CASCADE;
+
+INSERT INTO public."ROOM"(
+    "roomID", "roomSize", "roomName")
+VALUES (101, 23, 'Room101');
+
+INSERT INTO public."DOOR"(
+    "doorID", "roomID")
+VALUES (1, 101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-01 09:32:35.317', 20, 101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-02 09:32:35.317', 25,101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-03 09:32:35.317', 18,101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-04 09:32:35.317', 30,101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-05 09:32:35.317', 22, 101);
+
+INSERT INTO public."ROOM_TEMPERATURE_LOGGING"(
+    "timeStamp", temperature, "roomID")
+VALUES ('2023-02-06 09:32:35.317', 80,101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-01 09:32:35.317', 250, 101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-02 09:32:35.317', 600,101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-03 09:32:35.317', 800,101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-04 09:32:35.317', 900,101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-05 09:32:35.317', 1100, 101);
+
+INSERT INTO public."ROOM_CO2_LOGGING"(
+    "timeStamp", co2, "roomID")
+VALUES ('2023-02-06 09:32:35.317', 500,101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-01 09:32:35.317', 2, 101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-02 09:32:35.317', 15,101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-03 09:32:35.317', 7,101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-04 09:32:35.317', 30,101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-05 09:32:35.317', 24, 101);
+
+INSERT INTO public."ROOM_PEOPLE_LOGGING"(
+    "timeStamp", "numberOfPeople", "roomID")
+VALUES ('2023-02-06 09:32:35.317', 1,101);

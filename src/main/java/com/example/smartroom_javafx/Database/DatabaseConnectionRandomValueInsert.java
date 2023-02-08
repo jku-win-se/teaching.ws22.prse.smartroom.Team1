@@ -55,9 +55,9 @@ public class DatabaseConnectionRandomValueInsert {
 
     public void insertNumberOfPeople(Room room){
         //Random Value für Temperatur
-        Random RandomTemperature = new Random();
+        Random RandomNumberOfPeople = new Random();
         int upperbound = 35;
-        int numberOfPeople = RandomTemperature.nextInt(upperbound);
+        int numberOfPeople = RandomNumberOfPeople.nextInt(upperbound);
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
@@ -79,9 +79,9 @@ public class DatabaseConnectionRandomValueInsert {
 
     public void insertCO2Value(Room room){
 
-        Random RandomTemperature = new Random();
+        Random RandomCO2Value = new Random();
         int upperbound = 1500;
-        int ppm = RandomTemperature.nextInt(upperbound);
+        int ppm = RandomCO2Value.nextInt(upperbound);
         //Timestamp jetzt gerade
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 

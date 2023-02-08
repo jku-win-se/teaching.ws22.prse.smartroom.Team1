@@ -82,9 +82,10 @@ public class Charts {
         LinkedList<CO2Logging> CO2ValueLoggings = DatabaseConnectionGetLogging.SelectCO2Logging(room);
 
 
+        //Befüllung Room Temperature Chart
 
         XYChart.Series temperatureSeries = new XYChart.Series();
-        temperatureSeries.setName("temperature");
+        temperatureSeries.setName("Temperature");
         long firstTimestamp = roomTemperatureLoggings.get(0).getTimestamp().getTime();
         long lastTimestamp = roomTemperatureLoggings.get(roomTemperatureLoggings.size() - 1).getTimestamp().getTime();
 
@@ -112,44 +113,68 @@ public class Charts {
 
         temperatureChart.getData().add(temperatureSeries);
 
+        //Befüllung Number of People Chart
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        XYChart.Series numberOfPeopleSeries = new XYChart.Series();
+        numberOfPeopleSeries.setName("Number of People");
+        long firstTimestampTwo = roomNumberOfPeopleLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampTwo = roomNumberOfPeopleLoggings.get(roomNumberOfPeopleLoggings.size() - 1).getTimestamp().getTime();
 
 
         for (int i = 0; i < roomNumberOfPeopleLoggings.size(); i++) {
-            //numberOfPeopleChart
-            //series.getData().add(new XYChart.Data(entry.getKey().toString(), entry.getValue()));
+            NumberOfPeopleLogging log = roomNumberOfPeopleLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            numberOfPeopleSeries.getData().add(new XYChart.Data(timestamp, log.getNumberOfPeople()));
         }
 
+        NumberAxis xAxisTwo = (NumberAxis) numberOfPeopleChart.getXAxis();
+        xAxisTwo.setLowerBound(firstTimestampTwo);
+        xAxisTwo.setUpperBound(lastTimestampTwo);
+        xAxisTwo.setAutoRanging(false);
+        xAxisTwo.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        numberOfPeopleChart.getData().add(numberOfPeopleSeries);
+
+        //Befüllung CO2 Value Chart
+
+        XYChart.Series co2ValueSeries = new XYChart.Series();
+        co2ValueSeries.setName("CO2 Value");
+        long firstTimestampThree = CO2ValueLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampThree = CO2ValueLoggings.get(CO2ValueLoggings.size() - 1).getTimestamp().getTime();
+
         for (int i = 0; i < CO2ValueLoggings.size(); i++) {
-            //co2Chart
-            //series.getData().add(new XYChart.Data(entry.getKey().toString(), entry.getValue()));
+            CO2Logging log = CO2ValueLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            co2ValueSeries.getData().add(new XYChart.Data(timestamp, log.getCo2Value()));
         }
+
+        NumberAxis xAxisThree = (NumberAxis) co2Chart.getXAxis();
+        xAxisThree.setLowerBound(firstTimestampThree);
+        xAxisThree.setUpperBound(lastTimestampThree);
+        xAxisThree.setAutoRanging(false);
+        xAxisThree.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        co2Chart.getData().add(co2ValueSeries);
 
 
     }
