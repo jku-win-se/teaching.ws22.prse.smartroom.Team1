@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -76,5 +75,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label fx:id="alarm" layoutX="501.0" layoutY="56.0" prefHeight="26.0" prefWidth="105.0" />
    </children>
 </AnchorPane>
