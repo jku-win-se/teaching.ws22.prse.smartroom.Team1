@@ -22,7 +22,7 @@
          </font></Button>
       <Pane layoutX="600.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <children>
-            <Button fx:id="homepageButton" layoutX="37.0" layoutY="86.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="26.0" prefWidth="126.0" text="Homepage" textFill="#132b84">
+            <Button fx:id="homepageButton" layoutX="37.0" layoutY="136.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToHomepage" prefHeight="26.0" prefWidth="126.0" text="Homepage" textFill="#132b84">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -30,6 +30,16 @@
             <Label fx:id="roomName" alignment="CENTER" layoutX="36.0" layoutY="34.0" prefHeight="20.0" prefWidth="126.0" text="Room-Name" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="roomSize" layoutX="77.0" layoutY="84.0" text="size" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="roomID" layoutX="77.0" layoutY="64.0" text="id" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Label>
          </children>

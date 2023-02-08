@@ -62,6 +62,12 @@ public class RoomInformationController implements Initializable {
     @FXML
     private Label roomName;
 
+    @FXML
+    private Label roomID;
+
+    @FXML
+    private Label roomSize;
+
 
     public RoomInformationController() throws SQLException {
     }
@@ -71,6 +77,8 @@ public class RoomInformationController implements Initializable {
 
         this.room = room;
         this.roomName.setText(room.getName());
+        this.roomID.setText(String.valueOf(room.getId()));
+        this.roomSize.setText(String.valueOf(room.getSize()));
 
         for (Door door : room.getAllDoors()) {
             this.doors.getItems().add(door);
@@ -89,6 +97,8 @@ public class RoomInformationController implements Initializable {
     void initRoomControl(Room room) {
         this.room = room;
         this.roomName.setText(room.getName());
+        this.roomID.setText("ID: " + String.valueOf(room.getId()));
+        this.roomSize.setText("Size: " + String.valueOf(room.getSize()) + " m²");
         for (Thing thing : room.getAllThings()) {
             thingListView.getItems().add(thing);
         }

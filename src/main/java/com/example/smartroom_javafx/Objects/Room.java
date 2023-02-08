@@ -45,10 +45,12 @@ public class Room {
 
 
     public String getName(){
+
         return name;
     }
 
-    public int getSize(){return this.size;}
+    public int getSize(){
+        return this.size;}
 
     public void setName(String name){
         this.name = name;
