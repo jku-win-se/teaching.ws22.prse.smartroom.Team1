@@ -25,7 +25,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="lightChart" layoutX="41.0" layoutY="400.0" prefHeight="120.0" prefWidth="174.0" title="Lights">
+      <LineChart fx:id="lightChart" layoutX="75.0" layoutY="309.0" prefHeight="182.0" prefWidth="250.0" title="Lights">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -33,7 +33,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="doorChart" layoutX="65.0" layoutY="550.0" prefHeight="150.0" prefWidth="164.0" title="Doors">
+      <LineChart fx:id="doorChart" layoutX="75.0" layoutY="550.0" prefHeight="182.0" prefWidth="250.0" title="Doors">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -41,7 +41,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="fanChart" layoutX="300.0" layoutY="550.0" prefHeight="124.0" prefWidth="200.0" title="Fans">
+      <LineChart fx:id="fanChart" layoutX="429.0" layoutY="550.0" prefHeight="182.0" prefWidth="250.0" title="Fans">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -49,7 +49,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="windowChart" layoutX="241.0" layoutY="400.0" prefHeight="31.0" prefWidth="19.0" title="Windows">
+      <LineChart fx:id="windowChart" layoutX="414.0" layoutY="309.0" prefHeight="182.0" prefWidth="250.0" title="Windows">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>

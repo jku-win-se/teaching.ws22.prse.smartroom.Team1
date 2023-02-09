@@ -4,9 +4,7 @@ package com.example.smartroom_javafx.Controller;
 import com.example.smartroom_javafx.Application;
 import com.example.smartroom_javafx.Database.DatabaseConnectionGetLogging;
 import com.example.smartroom_javafx.Database.DatabaseConnectionInsert;
-import com.example.smartroom_javafx.Loggings.CO2Logging;
-import com.example.smartroom_javafx.Loggings.NumberOfPeopleLogging;
-import com.example.smartroom_javafx.Loggings.TemperatureLogging;
+import com.example.smartroom_javafx.Loggings.*;
 import com.example.smartroom_javafx.Objects.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -85,6 +83,13 @@ public class Charts {
         LinkedList<TemperatureLogging> roomTemperatureLoggings = DatabaseConnectionGetLogging.SelectAllTemperatureLoggings(room);
         LinkedList<NumberOfPeopleLogging> roomNumberOfPeopleLoggings = DatabaseConnectionGetLogging.SelectAllNumberOfPeopleLogging(room);
         LinkedList<CO2Logging> CO2ValueLoggings = DatabaseConnectionGetLogging.SelectCO2Logging(room);
+        /*
+        LinkedList<WindowLogging> WindowLoggings = DatabaseConnectionGetLogging.SelectWindowLogging(room);
+        LinkedList<LightLogging> LightLoggings = DatabaseConnectionGetLogging.SelectLightLogging(room);
+        LinkedList<DoorLogging> DoorLoggings = DatabaseConnectionGetLogging.SelectDoorLogging(room);
+        LinkedList<FanLogging> FanLoggings = DatabaseConnectionGetLogging.SelectFanLogging(room);
+
+         */
 
 
         //Befüllung Room Temperature Chart
@@ -260,6 +265,143 @@ public class Charts {
         });
 
         co2Chart.getData().add(co2ValueSeries);
+
+
+
+
+
+        /*
+
+        //Befüllung Light Chart
+
+        XYChart.Series lightSeries = new XYChart.Series();
+        lightSeries.setName("Light Setting");
+        long firstTimestampFour = LightLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampFour = LightLoggings.get(LightLoggings.size() - 1).getTimestamp().getTime();
+
+
+        for (int i = 0; i < LightLoggings.size(); i++) {
+            LightLogging log = LightLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            lightSeries.getData().add(new XYChart.Data(timestamp, log.getLightSetting()));
+        }
+
+        NumberAxis xAxisFour = (NumberAxis) lightChart.getXAxis();
+        xAxisFour.setLowerBound(firstTimestampThree);
+        xAxisFour.setUpperBound(lastTimestampThree);
+        xAxisFour.setAutoRanging(false);
+        xAxisFour.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        lightChart.getData().add(lightSeries);
+
+        //Befüllung Window Chart
+
+        XYChart.Series windowSeries = new XYChart.Series();
+        windowSeries.setName("Window Setting");
+        long firstTimestampfive = WindowLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampfive = WindowLoggings.get(WindowLoggings.size() - 1).getTimestamp().getTime();
+
+
+        for (int i = 0; i < WindowLoggings.size(); i++) {
+            WindowLogging log = WindowLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            windowSeries.getData().add(new XYChart.Data(timestamp, log.getWindowSetting()));
+        }
+
+        NumberAxis xAxisfive = (NumberAxis) windowChart.getXAxis();
+        xAxisfive.setLowerBound(firstTimestampfive);
+        xAxisfive.setUpperBound(lastTimestampfive);
+        xAxisfive.setAutoRanging(false);
+        xAxisfive.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        windowChart.getData().add(windowSeries);
+
+        //Befüllung Fan Chart
+
+        XYChart.Series fanSeries = new XYChart.Series();
+        fanSeries.setName("Fan Setting");
+        long firstTimestampsix = FanLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampsix = FanLoggings.get(FanLoggings.size() - 1).getTimestamp().getTime();
+
+
+        for (int i = 0; i < FanLoggings.size(); i++) {
+            FanLogging log = FanLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            fanSeries.getData().add(new XYChart.Data(timestamp, log.getFanSetting()));
+        }
+
+        NumberAxis xAxissix = (NumberAxis) windowChart.getXAxis();
+        xAxissix.setLowerBound(firstTimestampsix);
+        xAxissix.setUpperBound(lastTimestampsix);
+        xAxissix.setAutoRanging(false);
+        xAxissix.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        fanChart.getData().add(fanSeries);
+
+        //Befüllung Door Chart
+
+        XYChart.Series doorSeries = new XYChart.Series();
+        doorSeries.setName("Door Setting");
+        long firstTimestampseven = DoorLoggings.get(0).getTimestamp().getTime();
+        long lastTimestampseven = DoorLoggings.get(DoorLoggings.size() - 1).getTimestamp().getTime();
+
+
+        for (int i = 0; i < DoorLoggings.size(); i++) {
+            DoorLogging log = DoorLoggings.get(i);
+            long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
+            doorSeries.getData().add(new XYChart.Data(timestamp, log.getDoorSetting()));
+        }
+
+        NumberAxis xAxisseven = (NumberAxis) doorChart.getXAxis();
+        xAxisseven.setLowerBound(firstTimestampseven);
+        xAxisseven.setUpperBound(lastTimestampseven);
+        xAxisseven.setAutoRanging(false);
+        xAxisseven.setTickLabelFormatter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date(object.longValue()));
+            }
+
+            @Override
+            public Number fromString(String string) {
+                return null;
+            }
+        });
+
+        doorChart.getData().add(doorSeries);
+
+         */
+
 
 
     }

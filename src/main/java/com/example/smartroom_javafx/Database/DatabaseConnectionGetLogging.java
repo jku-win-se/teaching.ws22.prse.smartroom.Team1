@@ -93,6 +93,8 @@ public class DatabaseConnectionGetLogging {
 
     }
 
+    /*
+
     public static LinkedList<FanLogging> SelectFanLogging(Room room) throws SQLException {
 
         LinkedList<FanLogging> FanLoggings = new LinkedList<>();
@@ -114,6 +116,11 @@ public class DatabaseConnectionGetLogging {
         return FanLoggings;
 
     }
+
+
+     */
+
+    /*
 
     public static LinkedList<LightLogging> SelectLightLogging(Room room) throws SQLException {
 
@@ -137,6 +144,8 @@ public class DatabaseConnectionGetLogging {
 
     }
 
+     */
+    /*
     public static LinkedList<WindowLogging> SelectWindowLogging(Room room) throws SQLException {
 
         LinkedList<WindowLogging> WindowLoggings = new LinkedList<>();
@@ -145,8 +154,6 @@ public class DatabaseConnectionGetLogging {
         stmtWindowLoggings.setInt(1, room.getId());
 
         ResultSet rsWindowLogging = stmtWindowLoggings.executeQuery();
-
-
 
         while (rsWindowLogging.next()) {
             WindowLogging logging = new WindowLogging(rsWindowLogging.getTimestamp("timestamp"), rsWindowLogging.getBoolean("windowSetting"),rsWindowLogging.getInt("roomID"));
@@ -158,6 +165,10 @@ public class DatabaseConnectionGetLogging {
         return WindowLoggings;
 
     }
+
+     */
+
+    /*
 
     public static LinkedList<DoorLogging> SelectDoorLogging(Room room) throws SQLException {
 
@@ -180,5 +191,7 @@ public class DatabaseConnectionGetLogging {
         return DoorLoggings;
 
     }
+
+     */
 
 }
