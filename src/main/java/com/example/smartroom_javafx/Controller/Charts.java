@@ -104,8 +104,8 @@ public class Charts {
         int tempAlarm = roomTemperatureLoggings.get(roomTemperatureLoggings.size() - 1).getTemperature();
 
         if(tempAlarm > 70){
-            alarm.setText("WARNUNG! TEMPERATUR ÜBER 70 GRAD CELCSIUS");
-
+            alarm.setText("WARNUNG: TEMPERATUR ÜBER 70 GRAD!");
+            alarm.setStyle("-fx-text-fill: red;");
             //Open all doors -> true für unlocked
             LinkedList<Door> doorList = room.getAllDoors();
             for (int i = 0; i < doorList.size(); i++) {
