@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartroom_javafx.Controller.Charts">
    <children>
-      <LineChart fx:id="temperatureChart" layoutY="70.0" prefHeight="200.0" prefWidth="250.0" title="Room Temperature">
+      <LineChart fx:id="temperatureChart" layoutY="84.0" prefHeight="200.0" prefWidth="250.0" title="Room Temperature">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -18,7 +18,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="co2Chart" layoutX="500.0" layoutY="70.0" prefHeight="200.0" prefWidth="250.0" title="CO2">
+      <LineChart fx:id="co2Chart" layoutX="500.0" layoutY="84.0" prefHeight="200.0" prefWidth="250.0" title="CO2">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -26,7 +26,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="lightChart" layoutX="139.0" layoutY="285.0" prefHeight="200.0" prefWidth="250.0" title="Lights">
+      <LineChart fx:id="lightChart" layoutX="139.0" layoutY="300.0" prefHeight="200.0" prefWidth="250.0" title="Lights">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -34,7 +34,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="doorChart" layoutX="139.0" layoutY="486.0" prefHeight="200.0" prefWidth="250.0" title="Doors">
+      <LineChart fx:id="doorChart" layoutX="139.0" layoutY="500.0" prefHeight="200.0" prefWidth="250.0" title="Doors">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -42,7 +42,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="fanChart" layoutX="389.0" layoutY="486.0" prefHeight="200.0" prefWidth="250.0" title="Fans">
+      <LineChart fx:id="fanChart" layoutX="389.0" layoutY="500.0" prefHeight="200.0" prefWidth="250.0" title="Fans">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -50,7 +50,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="windowChart" layoutX="389.0" layoutY="285.0" prefHeight="200.0" prefWidth="250.0" title="Windows">
+      <LineChart fx:id="windowChart" layoutX="389.0" layoutY="300.0" prefHeight="200.0" prefWidth="250.0" title="Windows">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -58,7 +58,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <LineChart fx:id="numberOfPeopleChart" layoutX="250.0" layoutY="70.0" prefHeight="200.0" prefWidth="250.0" title="Number of People">
+      <LineChart fx:id="numberOfPeopleChart" layoutX="250.0" layoutY="84.0" prefHeight="200.0" prefWidth="250.0" title="Number of People">
         <xAxis>
           <NumberAxis side="BOTTOM" />
         </xAxis>
@@ -78,6 +78,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="764.0" layoutY="14.0" text="Temperature-Info:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane layoutX="706.0" layoutY="172.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #132b84;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="750.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
@@ -87,6 +92,26 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="473.0" prefHeight="83.0" prefWidth="144.0" text="Room-Name is color-based on CO2-Value:" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="556.0" text="&lt; 800" textFill="#01ff01">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="43.0" layoutY="576.0" text="800 - 1000" textFill="#f6ff00">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="596.0" text="&gt; 1000" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
