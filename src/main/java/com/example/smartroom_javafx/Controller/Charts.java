@@ -63,6 +63,7 @@ public class Charts {
     @FXML
     private Label roomName;
 
+
     public Charts() throws SQLException {
     }
 
@@ -237,8 +238,15 @@ public class Charts {
             }
             insert.insertFan(room);
 
+            roomName.setStyle("-fx-text-fill: red;");
+
             System.out.println("All windows are open and fans are on because the CO2 Value is over 1000! Fresh air is needed.");
 
+
+        }else if(co2Alarm > 800 && co2Alarm < 1000){
+            roomName.setStyle("-fx-text-fill: yellow;");
+        } else if (co2Alarm < 800) {
+            roomName.setStyle("-fx-text-fill: green;");
 
         }
 
