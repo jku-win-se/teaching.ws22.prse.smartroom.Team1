@@ -36,7 +36,7 @@ public class RoomInformationController implements Initializable {
     private ChoiceBox<String> thingsChoiceBox;
 
     @FXML
-    private final String[] thingsChoosen = {"Door", "Window", "Fan", "Lights"};
+    private final String[] thingsChoosen = {"Door", "Window", "Fan", "Light"};
 
     @FXML
     private Button infoButton;
@@ -107,29 +107,30 @@ public class RoomInformationController implements Initializable {
     @FXML
     void addThing(MouseEvent event) throws SQLException {
         String choosenThing = thingsChoiceBox.getValue();
+        System.out.println(choosenThing);
         if ("Window".equals(choosenThing)) {
             Window window = new Window("Window");
             window.setWindowId(insert.windowDataID());
             room.addThing(window);
-            insert.insertWindow(room);
+            insert.insertOneWindow(room, window);
             thingListView.getItems().add(window);
         } else if ("Door".equals(choosenThing)) {
             Door door = new Door("Door");
             door.setDoorId(insert.doorDataID());
-            insert.insertDoor(room);
+            insert.insertOneDoor(room, door);
             room.addThing(door);
             thingListView.getItems().add(door);
-        } else if ("Lights".equals(choosenThing)) {
+        } else if ("Light".equals(choosenThing)) {
             Light light = new Light("Light");
             light.setLightId(insert.lightDataID());
-            insert.insertLight(room);
+            insert.insertOneLight(room, light);
             room.addThing(light);
             thingListView.getItems().add(light);
         } else if ("Fan".equals(choosenThing)) {
             Fan fan = new Fan("Fan");
             fan.setFanId(insert.fanDataID());
             room.addThing(fan);
-            insert.insertFan(room);
+            insert.insertOneFan(room, fan);
             thingListView.getItems().add(fan);
         }
     }
@@ -143,14 +144,11 @@ public class RoomInformationController implements Initializable {
                 room.removeThing(thing);
                 if (thing instanceof Window){
                     delete.databaseWindowDelete(((Window) thing).getWindowId());
-                }
-                else if (thing instanceof Door){
+                } else if (thing instanceof Door){
                     delete.databaseDoorDelete(((Door) thing).getDoorId());
-                }
-                else if (thing instanceof Light){
+                } else if (thing instanceof Light){
                     delete.databaseLightDelete(((Light) thing).getLightId());
-                }
-                else if (thing instanceof Fan){
+                } else if (thing instanceof Fan){
                     delete.databaseFanDelete(((Fan) thing).getFanId());
                 }
             }
@@ -166,26 +164,15 @@ public class RoomInformationController implements Initializable {
         Thing thing = thingListView.getItems().get(choosenThing);
         boolean isSetting = thing.getSetting();
         thing.setSetting(!isSetting);
-        if (isSetting) {
-            if (thing instanceof Window) {
-                insert.insertWindow(room);
-            } else if (thing instanceof Light) {
-                insert.insertLight(room);
-            } else if (thing instanceof Door) {
-                insert.insertDoor(room);
-            } else if (thing instanceof Fan) {
-                insert.insertFan(room);
-            }
-        } else {
-            if (thing instanceof Window) {
-                insert.insertWindow(room);
-            } else if (thing instanceof Light) {
-                insert.insertLight(room);
-            } else if (thing instanceof Door) {
-                insert.insertDoor(room);
-            } else if (thing instanceof Fan) {
-                insert.insertFan(room);
-            }
+
+        if (thing instanceof Window) {
+            insert.insertChangedOrNewWindow(((Window) thing).getWindowId(), !isSetting);
+        } else if (thing instanceof Light) {
+            insert.insertChangedOrNewLight(((Light) thing).getLightId(), !isSetting);
+        } else if (thing instanceof Door) {
+            insert.insertChangedOrNewDoor(((Door) thing).getDoorId(), !isSetting);
+        } else if (thing instanceof Fan) {
+            insert.insertChangedOrNewFan(((Fan) thing).getFanId(), !isSetting);
         }
         thingListView.refresh();
     }

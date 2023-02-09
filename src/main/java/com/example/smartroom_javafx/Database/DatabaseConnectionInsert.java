@@ -3,6 +3,7 @@ package com.example.smartroom_javafx.Database;
 import com.example.smartroom_javafx.Objects.*;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public class DatabaseConnectionInsert {
@@ -48,11 +49,12 @@ public class DatabaseConnectionInsert {
     }
 
     public void insertRoom(Room room){
-        try {
-            String query = "INSERT INTO public.\"ROOM\"(\n" +
-                    "\t\"roomID\", \"roomSize\", \"roomName\")\n" +
-                    "\tVALUES (?, ?, ?);";
-            PreparedStatement statement = connection.prepareStatement(query);
+
+        String query = "INSERT INTO public.\"ROOM\"(\n" +
+                "\t\"roomID\", \"roomSize\", \"roomName\")\n" +
+                "\tVALUES (?, ?, ?);";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(3, room.getName());
             statement.setInt(2, room.getSize());
             statement.setInt(1, room.getId());
@@ -69,65 +71,151 @@ public class DatabaseConnectionInsert {
 
 
     public void insertFan(Room room) throws SQLException {
+
+        String query = "INSERT INTO public.\"FAN\"(\n" +
+                "\t\"fanID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
         try {
             for (Fan fan : room.getAllFans()) {
-                String query = "INSERT INTO public.\"FAN\"(\n" +
-                        "\t\"fanID\", \"roomID\")\n" +
-                        "\tVALUES (?, ?);";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setInt(1, fanDataID());
                 statement.setInt(2, room.getId());
                 statement.executeUpdate();
+                int id = fanDataID()-1;
+                insertChangedOrNewFan(id, false);
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertOneFan(Room room, Fan fan) throws SQLException {
+
+        String query = "INSERT INTO public.\"FAN\"(\n" +
+                "\t\"fanID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int id = fanDataID();
+            statement.setInt(1, fanDataID());
+            statement.setInt(2, room.getId());
+            statement.executeUpdate();
+            insertChangedOrNewFan(id, false);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void insertDoor(Room room) throws SQLException {
+
+        String query = "INSERT INTO public.\"DOOR\"(\n" +
+                "\t\"doorID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
         try {
             for (Door door : room.getAllDoors()) {
-                String query = "INSERT INTO public.\"DOOR\"(\n" +
-                        "\t\"doorID\", \"roomID\")\n" +
-                        "\tVALUES (?, ?);";
-
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setInt(1, doorDataID());
                 statement.setInt(2, room.getId());
                 statement.executeUpdate();
+                int id = doorDataID()-1;
+                insertChangedOrNewDoor(id, false);
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertOneDoor(Room room, Door door) throws SQLException {
+
+        String query = "INSERT INTO public.\"DOOR\"(\n" +
+                "\t\"doorID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int id = doorDataID();
+            statement.setInt(1, doorDataID());
+            statement.setInt(2, room.getId());
+            statement.executeUpdate();
+            insertChangedOrNewDoor(id, false);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void insertWindow(Room room) throws SQLException {
+
+        String query = "INSERT INTO public.\"GLASSWINDOW\"(\n" +
+                "\t\"windowID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
         try {
             for (Window window : room.getAllWindows()) {
-                String query = "INSERT INTO public.\"GLASSWINDOW\"(\n" +
-                        "\t\"windowID\", \"roomID\")\n" +
-                        "\tVALUES (?, ?);";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setInt(1, windowDataID());
                 statement.setInt(2, room.getId());
                 statement.executeUpdate();
+                int id = windowDataID()-1;
+                insertChangedOrNewWindow(id, false);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public void insertOneWindow(Room room, Window window) throws SQLException {
+
+        String query = "INSERT INTO public.\"GLASSWINDOW\"(\n" +
+                "\t\"windowID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int id = windowDataID();
+            statement.setInt(1, windowDataID());
+            statement.setInt(2, room.getId());
+            statement.executeUpdate();
+            insertChangedOrNewWindow(id, false);
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void insertLight(Room room) throws SQLException {
+
+        String query = "INSERT INTO public.\"LIGHT\"(\n" +
+                "\t\"lightID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
         try {
             for (Light light : room.getAllLights()) {
-                String query = "INSERT INTO public.\"LIGHT\"(\n" +
-                        "\t\"lightID\", \"roomID\")\n" +
-                        "\tVALUES (?, ?);";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setInt(1, lightDataID());
                 statement.setInt(2, room.getId());
                 statement.executeUpdate();
+                int id = lightDataID()-1;
+                insertChangedOrNewLight(id, false);
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertOneLight(Room room, Light light) throws SQLException {
+
+        String query = "INSERT INTO public.\"LIGHT\"(\n" +
+                "\t\"lightID\", \"roomID\")\n" +
+                "\tVALUES (?, ?);";
+
+        try(PreparedStatement statement = connection.prepareStatement(query);) {
+            int id = lightDataID();
+            statement.setInt(1, lightDataID());
+            statement.setInt(2, room.getId());
+            statement.executeUpdate();
+            insertChangedOrNewLight(id, false);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -255,5 +343,69 @@ public class DatabaseConnectionInsert {
             System.out.println(e.getMessage());
         }
         return 0;
+    }
+
+    public void insertChangedOrNewLight(int lightID, boolean setting) throws SQLException {
+        LocalDateTime time = LocalDateTime.now();
+        try {
+            String query = "INSERT INTO public.\"LIGHT_LOGGING\"(\n" +
+                    "\t\"timeStamp\", \"switch\", \"lightID\")\n" +
+                    "\tVALUES (?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setObject(1, time);
+            statement.setBoolean(2, setting);
+            statement.setInt(3, lightID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertChangedOrNewDoor(int doorID, boolean setting) throws SQLException {
+        LocalDateTime time = LocalDateTime.now();
+        try {
+            String query = "INSERT INTO public.\"DOOR_LOGGING\"(\n" +
+                    "\t\"timeStamp\", \"switch\", \"doorID\")\n" +
+                    "\tVALUES (?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setObject(1, time);
+            statement.setBoolean(2, setting);
+            statement.setInt(3, doorID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertChangedOrNewFan(int fanID, boolean setting) throws SQLException {
+        LocalDateTime time = LocalDateTime.now();
+        try {
+            String query = "INSERT INTO public.\"FAN_LOGGING\"(\n" +
+                    "\t\"timeStamp\", \"switch\", \"fanID\")\n" +
+                    "\tVALUES (?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setObject(1, time);
+            statement.setBoolean(2, setting);
+            statement.setInt(3, fanID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertChangedOrNewWindow(int windowID, boolean setting) throws SQLException {
+        LocalDateTime time = LocalDateTime.now();
+        try {
+            String query = "INSERT INTO public.\"GLASSWINDOW_LOGGING\"(\n" +
+                    "\t\"timeStamp\", \"switch\", \"windowID\")\n" +
+                    "\tVALUES (?, ?, ?);";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setObject(1, time);
+            statement.setBoolean(2, setting);
+            statement.setInt(3, windowID);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

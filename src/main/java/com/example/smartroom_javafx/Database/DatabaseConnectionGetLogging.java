@@ -1,8 +1,6 @@
 package com.example.smartroom_javafx.Database;
 
-import com.example.smartroom_javafx.Loggings.CO2Logging;
-import com.example.smartroom_javafx.Loggings.NumberOfPeopleLogging;
-import com.example.smartroom_javafx.Loggings.TemperatureLogging;
+import com.example.smartroom_javafx.Loggings.*;
 import com.example.smartroom_javafx.Objects.Room;
 
 import java.sql.*;
@@ -95,10 +93,92 @@ public class DatabaseConnectionGetLogging {
 
     }
 
+    public static LinkedList<FanLogging> SelectFanLogging(Room room) throws SQLException {
+
+        LinkedList<FanLogging> FanLoggings = new LinkedList<>();
+        String queryAllLoggings = "Select \"timeStamp\", \"switch\", \"roomID\" From \"FAN_LOGGING\" WHERE \"roomID\" = ?";
+        PreparedStatement stmtFanLoggings = connection.prepareStatement(queryAllLoggings);
+        stmtFanLoggings.setInt(1, room.getId());
+
+        ResultSet rsFanLogging = stmtFanLoggings.executeQuery();
 
 
 
+        while (rsFanLogging.next()) {
+            FanLogging logging = new FanLogging(rsFanLogging.getTimestamp("timestamp"), rsFanLogging.getBoolean("fanSetting"),rsFanLogging.getInt("roomID"));
+            FanLoggings.add(logging);
+            System.out.println("Fan Logging -> roomID: " + logging.getRoomID() + " fan on:" + logging.getFanSetting() + " timestamp:" + logging.getTimestamp());
+
+        }
+
+        return FanLoggings;
+
+    }
+
+    public static LinkedList<LightLogging> SelectLightLogging(Room room) throws SQLException {
+
+        LinkedList<LightLogging> LightLoggings = new LinkedList<>();
+        String queryAllLoggings = "Select \"timeStamp\", \"switch\", \"roomID\" From \"LIGHT_LOGGING\" WHERE \"roomID\" = ?";
+        PreparedStatement stmtLightLoggings = connection.prepareStatement(queryAllLoggings);
+        stmtLightLoggings.setInt(1, room.getId());
+
+        ResultSet rsLightLogging = stmtLightLoggings.executeQuery();
 
 
+
+        while (rsLightLogging.next()) {
+            LightLogging logging = new LightLogging(rsLightLogging.getTimestamp("timestamp"), rsLightLogging.getBoolean("fanSetting"),rsLightLogging.getInt("roomID"));
+            LightLoggings.add(logging);
+            System.out.println("Light Logging -> roomID: " + logging.getRoomID() + " light on:" + logging.getLightSetting() + " timestamp:" + logging.getTimestamp());
+
+        }
+
+        return LightLoggings;
+
+    }
+
+    public static LinkedList<WindowLogging> SelectWindowLogging(Room room) throws SQLException {
+
+        LinkedList<WindowLogging> WindowLoggings = new LinkedList<>();
+        String queryAllLoggings = "Select \"timeStamp\", \"switch\", \"roomID\" From \"GLASSWINDOW_LOGGING\" WHERE \"roomID\" = ?";
+        PreparedStatement stmtWindowLoggings = connection.prepareStatement(queryAllLoggings);
+        stmtWindowLoggings.setInt(1, room.getId());
+
+        ResultSet rsWindowLogging = stmtWindowLoggings.executeQuery();
+
+
+
+        while (rsWindowLogging.next()) {
+            WindowLogging logging = new WindowLogging(rsWindowLogging.getTimestamp("timestamp"), rsWindowLogging.getBoolean("windowSetting"),rsWindowLogging.getInt("roomID"));
+            WindowLoggings.add(logging);
+            System.out.println("Window Logging -> roomID: " + logging.getRoomID() + " window open:" + logging.getWindowSetting() + " timestamp:" + logging.getTimestamp());
+
+        }
+
+        return WindowLoggings;
+
+    }
+
+    public static LinkedList<DoorLogging> SelectDoorLogging(Room room) throws SQLException {
+
+        LinkedList<DoorLogging> DoorLoggings = new LinkedList<>();
+        String queryAllLoggings = "Select \"timeStamp\", \"switch\", \"roomID\" From \"DOOR_LOGGING\" WHERE \"roomID\" = ?";
+        PreparedStatement stmtDoorLoggings = connection.prepareStatement(queryAllLoggings);
+        stmtDoorLoggings.setInt(1, room.getId());
+
+        ResultSet rsDoorLogging = stmtDoorLoggings.executeQuery();
+
+
+
+        while (rsDoorLogging.next()) {
+            DoorLogging logging = new DoorLogging(rsDoorLogging.getTimestamp("timestamp"), rsDoorLogging.getBoolean("fanSetting"),rsDoorLogging.getInt("roomID"));
+            DoorLoggings.add(logging);
+            System.out.println("Door Logging -> roomID: " + logging.getRoomID() + " door open:" + logging.getDoorSetting() + " timestamp:" + logging.getTimestamp());
+
+        }
+
+        return DoorLoggings;
+
+    }
 
 }
