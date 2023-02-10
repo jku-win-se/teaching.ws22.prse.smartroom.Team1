@@ -11,6 +11,13 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
+
+/**
+ * Klasse mit JDBC-Methoden zum exportieren eines Raumes inkl. der Objekte aus den DB in eine Excel-Datei
+ * Der Ablageort der Datei, befindet sich im selben Ordner wie das Projekt
+ * Vorangehensweise: Projekt-Pfad innerhalb IntelliJ herauskopieren --> Explorer öffnen und diese in die obere Zeile
+ * wo sich die Pfads befinden, einfügen
+ */
 public class DatabaseConnectionExport {
 
     static String username = "postgres";

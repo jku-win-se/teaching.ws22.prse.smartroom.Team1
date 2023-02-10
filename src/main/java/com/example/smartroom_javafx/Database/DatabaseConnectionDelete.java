@@ -7,6 +7,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * Klasse mit JDBC-Methoden zum löschen eines Raumes inkl. der Objekte in der Datenbank
+ */
+
 public class DatabaseConnectionDelete {
 
     static String username = "postgres";

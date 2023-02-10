@@ -14,6 +14,10 @@ import javafx.stage.WindowEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Diese Klasse ist zuständig für das Starten der Applikation
+ */
+
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {

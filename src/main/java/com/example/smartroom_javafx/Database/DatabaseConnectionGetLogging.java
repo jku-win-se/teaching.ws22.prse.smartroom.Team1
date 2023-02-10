@@ -7,6 +7,11 @@ import com.example.smartroom_javafx.Objects.Thing;
 import java.sql.*;
 import java.util.LinkedList;
 
+
+/**
+ * Klasse mit JDBC-Methoden zum Extrahieren der verschiedenen Loggings
+ */
+
 public class DatabaseConnectionGetLogging {
 
     String username = "postgres";

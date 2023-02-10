@@ -5,6 +5,11 @@ import com.example.smartroom_javafx.Objects.Room;
 import java.sql.*;
 import java.util.Random;
 
+
+/**
+ * Klasse mit JDBC-Methoden zum Speichern von Random-Values in der Datenbank
+ */
+
 public class DatabaseConnectionRandomValueInsert {
     String username = "postgres";
     String password = "user123";

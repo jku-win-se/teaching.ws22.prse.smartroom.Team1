@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Iterator;
 
+/**
+ * Klasse mit JDBC-Methoden zum Importieren eines Raumes inkl. der Objekte einer Excel-Datei
+ */
+
 public class DatabaseConnectionImport {
 
     static String username = "postgres";

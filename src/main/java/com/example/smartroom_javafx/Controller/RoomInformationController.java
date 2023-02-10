@@ -23,6 +23,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
+/**
+ * Klasse für das Bearbeiten von Things auf der "RoomInformation.fxml" ansicht
+ */
 public class RoomInformationController implements Initializable {
 
     Room room;

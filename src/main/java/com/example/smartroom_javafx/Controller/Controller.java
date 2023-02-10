@@ -22,6 +22,10 @@ import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
+/**
+ * Der Hauptkontroller der Hauptseite mit den wichtigsten Funktionen
+ */
+
 public class Controller implements Initializable {
 
         public static LinkedList<Room> rooms = new LinkedList<>();

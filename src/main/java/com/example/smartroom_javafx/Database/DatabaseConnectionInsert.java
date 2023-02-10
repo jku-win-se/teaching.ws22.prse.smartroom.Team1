@@ -6,6 +6,10 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
+/**
+ * Klasse mit JDBC-Methoden zum hinzufügen eines Raumes inkl. der Objekte in die Datenbank
+ */
+
 public class DatabaseConnectionInsert {
 
     String username = "postgres";

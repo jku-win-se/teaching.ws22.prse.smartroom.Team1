@@ -26,6 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 
+
+/**
+ * Controller der Chart-Übersichts-Seite, indem die Charts graphisch vorhanden sind
+ */
 public class Charts {
 
     DatabaseConnectionGetLogging randomValueInsert = new DatabaseConnectionGetLogging();
