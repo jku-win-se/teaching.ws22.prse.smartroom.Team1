@@ -1,10 +1,6 @@
 
 „
 Tsrc/main/java/com/example/smartroom_javafx/Controller/RoomInformationController.java,9\a\9a972dff0b6d3a8dbd1536eb644d0fd4bae4eadf
-~
-Nsrc/main/java/com/example/smartroom_javafx/Loggings/NumberOfPeopleLogging.java,d\c\dca2173d8512236467d85e1fca30c69b2b9d0c97
-l
-<src/main/java/com/example/smartroom_javafx/Objects/Room.java,a\e\aea6681c394f5a0b64b73c3b01b2f060d4a3e0fd
 k
 ;src/main/java/com/example/smartroom_javafx/Application.java,0\5\05002baeeb9f6e6b92b436fbfae7472e820a0091
 n
