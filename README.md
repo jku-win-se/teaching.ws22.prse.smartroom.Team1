@@ -1,4 +1,4 @@
-# teaching.ws22.prse.smartroom.Team1
+Guide:
 1)	Postgres Datenbank und PG4 Admin downloaden (Windows Installer)
 a.	https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 b.	Als User Namen „postgres“ angeben und als Passwort und Admin Passwort „user123“ angeben 
