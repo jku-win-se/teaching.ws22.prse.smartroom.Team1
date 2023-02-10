@@ -78,19 +78,6 @@ public class Controller implements Initializable {
     public Controller() throws SQLException {
     }
 
-    public void initRoomsOverview() throws SQLException {
-        LinkedList<Room> backupList = new LinkedList<>();
-        backupList = (LinkedList)rooms.clone();
-        rooms.clear();
-        rooms = insert.createRooms(rooms);
-
-        backupList.clear();
-
-        for (Room room : rooms) {
-            listRoom.getItems().add(room);
-        }
-    }
-
     @FXML
     void btnAddRoom(ActionEvent event) throws Exception {
 
@@ -252,9 +239,7 @@ public class Controller implements Initializable {
         Room room = (listRoom.getItems().get(chosenRoom));
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("RoomInformation.fxml"));
-
         root = fxmlLoader.load();
-
 
         RoomInformationController roomInformation = fxmlLoader.getController();
         roomInformation.initializeRoomInfo(room);
@@ -263,7 +248,6 @@ public class Controller implements Initializable {
         stage = (Stage) roomInfoButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
-
     }
 
     @FXML
@@ -278,9 +262,7 @@ public class Controller implements Initializable {
 
         root = fxmlLoader.load();
 
-
         Charts chartInformation = fxmlLoader.getController();
-
         chartInformation.initializeRoomInfo(room);
 
         //Abspeichern random Temperature Value mit Timestamp
@@ -292,18 +274,8 @@ public class Controller implements Initializable {
 
         chartInformation.getRoomLogging(room);
 
-
-
         stage = (Stage) chartInfoButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
-
-
-
-
-
-
-
-
     }
 }

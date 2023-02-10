@@ -274,14 +274,10 @@ public class Charts {
 
         co2Chart.getData().add(co2ValueSeries);
 
-
-
-
-
         /*
+        //---Vorbereitete COde für das Befüllen von Object-Charts - konnte nicht rechtzeitig umgesetzt werden
 
         //Befüllung Light Chart
-
         XYChart.Series lightSeries = new XYChart.Series();
         lightSeries.setName("Light Setting");
         long firstTimestampFour = LightLoggings.get(0).getTimestamp().getTime();
@@ -351,7 +347,6 @@ public class Charts {
         long firstTimestampsix = FanLoggings.get(0).getTimestamp().getTime();
         long lastTimestampsix = FanLoggings.get(FanLoggings.size() - 1).getTimestamp().getTime();
 
-
         for (int i = 0; i < FanLoggings.size(); i++) {
             FanLogging log = FanLoggings.get(i);
             long timestamp = log.getTimestamp().getTime(); // get the timestamp in milliseconds
@@ -407,10 +402,7 @@ public class Charts {
         });
 
         doorChart.getData().add(doorSeries);
-
          */
-
-
 
     }
 
@@ -436,8 +428,5 @@ public class Charts {
         stage = (Stage) homepageButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
-
     }
-
-
 }

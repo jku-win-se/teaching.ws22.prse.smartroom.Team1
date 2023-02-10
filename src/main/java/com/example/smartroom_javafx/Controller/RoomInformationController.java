@@ -198,16 +198,13 @@ public class RoomInformationController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         stage = (Stage) homepageButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.getRoot());
         stage.setScene(scene);
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         thingsChoiceBox.getItems().addAll(thingsChoosen);
     }
-
 }

@@ -41,8 +41,6 @@ public class DatabaseConnectionGetLogging {
 
         ResultSet rsRoomTemperatureLogging = stmtTemperatureLoggings.executeQuery();
 
-
-
         while (rsRoomTemperatureLogging.next()) {
             TemperatureLogging logging = new TemperatureLogging(rsRoomTemperatureLogging.getTimestamp("timestamp"), rsRoomTemperatureLogging.getInt("temperature"),rsRoomTemperatureLogging.getInt("roomID"));
             roomTemperatureLoggings.add(logging);
@@ -60,8 +58,6 @@ public class DatabaseConnectionGetLogging {
         stmtNumberOfPeopleLoggings.setInt(1, room.getId());
 
         ResultSet rsNumberOfPeopleLogging = stmtNumberOfPeopleLoggings.executeQuery();
-
-
 
         while (rsNumberOfPeopleLogging.next()) {
             NumberOfPeopleLogging logging = new NumberOfPeopleLogging(rsNumberOfPeopleLogging.getTimestamp("timestamp"), rsNumberOfPeopleLogging.getInt("numberOfPeople"),rsNumberOfPeopleLogging.getInt("roomID"));
@@ -81,20 +77,14 @@ public class DatabaseConnectionGetLogging {
 
         ResultSet rsCO2ValueLogging = stmtCO2ValueLoggings.executeQuery();
 
-
-
         while (rsCO2ValueLogging.next()) {
             CO2Logging logging = new CO2Logging(rsCO2ValueLogging.getTimestamp("timestamp"), rsCO2ValueLogging.getInt("co2"),rsCO2ValueLogging.getInt("roomID"));
             CO2ValueLoggings.add(logging);
             System.out.println("CO2 Value Logging -> roomID: " + logging.getRoomID() + " co2:" + logging.getCo2Value() + " timestamp:" + logging.getTimestamp());
 
         }
-
         return CO2ValueLoggings;
-
     }
-
-
 
     public static LinkedList<FanLogging> SelectFanLogging(Thing thing) throws SQLException {
 
@@ -105,21 +95,14 @@ public class DatabaseConnectionGetLogging {
 
         ResultSet rsFanLogging = stmtFanLoggings.executeQuery();
 
-
-
         while (rsFanLogging.next()) {
             FanLogging logging = new FanLogging(rsFanLogging.getTimestamp("timestamp"), rsFanLogging.getBoolean("fanSetting"),rsFanLogging.getInt("roomID"));
             FanLoggings.add(logging);
             System.out.println("Fan Logging -> fanID: " + logging.getFanID() + " fan on:" + logging.getFanSetting() + " timestamp:" + logging.getTimestamp());
 
         }
-
         return FanLoggings;
-
     }
-
-
-
 
     public static LinkedList<LightLogging> SelectLightLogging(Thing thing) throws SQLException {
 
@@ -130,19 +113,14 @@ public class DatabaseConnectionGetLogging {
 
         ResultSet rsLightLogging = stmtLightLoggings.executeQuery();
 
-
-
         while (rsLightLogging.next()) {
             LightLogging logging = new LightLogging(rsLightLogging.getTimestamp("timestamp"), rsLightLogging.getBoolean("fanSetting"),rsLightLogging.getInt("roomID"));
             LightLoggings.add(logging);
             System.out.println("Light Logging -> lightID: " + logging.getlightID() + " light on:" + logging.getLightSetting() + " timestamp:" + logging.getTimestamp());
 
         }
-
         return LightLoggings;
-
     }
-
 
     public static LinkedList<WindowLogging> SelectWindowLogging(Thing thing) throws SQLException {
 
@@ -159,12 +137,8 @@ public class DatabaseConnectionGetLogging {
             System.out.println("Window Logging -> windowID: " + logging.getWindowID() + " window open:" + logging.getWindowSetting() + " timestamp:" + logging.getTimestamp());
 
         }
-
         return WindowLoggings;
-
     }
-
-
 
     public static LinkedList<DoorLogging> SelectDoorLogging(Thing thing) throws SQLException {
 
@@ -175,19 +149,12 @@ public class DatabaseConnectionGetLogging {
 
         ResultSet rsDoorLogging = stmtDoorLoggings.executeQuery();
 
-
-
         while (rsDoorLogging.next()) {
             DoorLogging logging = new DoorLogging(rsDoorLogging.getTimestamp("timestamp"), rsDoorLogging.getBoolean("fanSetting"),rsDoorLogging.getInt("roomID"));
             DoorLoggings.add(logging);
             System.out.println("Door Logging -> doorID: " + logging.getDoorID() + " door open:" + logging.getDoorSetting() + " timestamp:" + logging.getTimestamp());
 
         }
-
         return DoorLoggings;
-
     }
-
-
-
 }
