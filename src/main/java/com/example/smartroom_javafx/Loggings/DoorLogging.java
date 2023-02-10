@@ -4,18 +4,18 @@ import java.sql.Timestamp;
 
 public class DoorLogging {
 
-    private int roomID;
+    private int doorID;
     private boolean doorSetting;
     private Timestamp timestamp;
 
-    public DoorLogging(Timestamp timestamp, boolean doorSetting, int roomID) {
-        this.roomID = roomID;
+    public DoorLogging(Timestamp timestamp, boolean doorSetting, int doorID) {
+        this.doorID = doorID;
         this.doorSetting = doorSetting;
         this.timestamp = timestamp;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public int getDoorID() {
+        return doorID;
     }
 
     public boolean getDoorSetting() {
@@ -30,8 +30,8 @@ public class DoorLogging {
         this.timestamp = timestamp;
     }
 
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
+    public void setDoorID(int doorID) {
+        this.doorID = doorID;
     }
 
     public void setDoorSetting(boolean doorSetting) {

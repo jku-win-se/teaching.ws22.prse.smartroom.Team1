@@ -4,18 +4,18 @@ import java.sql.Timestamp;
 
 public class LightLogging {
 
-    private int roomID;
+    private int lightID;
     private boolean lightSetting;
     private Timestamp timestamp;
 
-    public LightLogging(Timestamp timestamp, boolean lightSetting, int roomID) {
-        this.roomID = roomID;
+    public LightLogging(Timestamp timestamp, boolean lightSetting, int lightID) {
+        this.lightID = lightID;
         this.lightSetting = lightSetting;
         this.timestamp = timestamp;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public int getlightID() {
+        return lightID;
     }
 
     public boolean getLightSetting() {
@@ -26,8 +26,8 @@ public class LightLogging {
         return timestamp;
     }
 
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
+    public void setLightID(int lightID) {
+        this.lightID = lightID;
     }
 
     public void setLightSetting(boolean lightSetting) {

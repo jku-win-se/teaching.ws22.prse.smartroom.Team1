@@ -6,18 +6,18 @@ import java.sql.Timestamp;
 
 public class FanLogging {
 
-    private int roomID;
+    private int fanID;
     private boolean fanSetting;
     private Timestamp timestamp;
 
-    public FanLogging(Timestamp timestamp, boolean fanSetting, int roomID) {
-        this.roomID = roomID;
+    public FanLogging(Timestamp timestamp, boolean fanSetting, int fanID) {
+        this.fanID = fanID;
         this.fanSetting = fanSetting;
         this.timestamp = timestamp;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public int getFanID() {
+        return fanID;
     }
 
     public boolean getFanSetting() {
@@ -28,8 +28,8 @@ public class FanLogging {
         return timestamp;
     }
 
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
+    public void setFanID(int fanID) {
+        this.fanID = fanID;
     }
 
     public void setFanSetting(boolean fanSetting) {

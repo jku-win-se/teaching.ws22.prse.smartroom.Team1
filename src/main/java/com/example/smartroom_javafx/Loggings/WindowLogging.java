@@ -4,18 +4,18 @@ import java.sql.Timestamp;
 
 public class WindowLogging {
 
-    private int roomID;
+    private int windowID;
     private boolean windowSetting;
     private Timestamp timestamp;
 
-    public WindowLogging(Timestamp timestamp, boolean windowSetting, int roomID) {
-        this.roomID = roomID;
+    public WindowLogging(Timestamp timestamp, boolean windowSetting, int windowID) {
+        this.windowID = windowID;
         this.windowSetting = windowSetting;
         this.timestamp = timestamp;
     }
 
-    public int getRoomID() {
-        return roomID;
+    public int getWindowID() {
+        return windowID;
     }
 
     public boolean getWindowSetting() {
@@ -26,8 +26,8 @@ public class WindowLogging {
         return timestamp;
     }
 
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
+    public void setWindowID(int windowID) {
+        this.windowID = windowID;
     }
 
     public void setWindowSetting(boolean windowSetting) {
